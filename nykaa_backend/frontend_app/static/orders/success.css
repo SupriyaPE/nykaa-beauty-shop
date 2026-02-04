@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #fafafa;
+  color: #111;
+}
+
+/* PAGE WRAPPER */
+.success-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* CARD */
+.success-card {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;        /* ⬅️ wider */
+  padding: 56px 44px;     /* ⬅️ more breathing space */
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* CHECK ICON */
+.success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #e80071;
+  color: white;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TITLE */
+.success-card h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* DELIVERY INFO */
+.delivery-info {
+  background: #fff0f6;
+  color: #e80071;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* ACTIONS */
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* PRIMARY BUTTON */
+.primary-btn {
+  display: block;
+  background: #e80071;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* SECONDARY */
+.secondary-link {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
+}

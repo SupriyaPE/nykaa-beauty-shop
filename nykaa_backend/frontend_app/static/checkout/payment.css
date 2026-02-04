@@ -1,0 +1,156 @@
+:root {
+  --nykaa-pink: #e80071;
+  --text-dark: #3f414d;
+  --text-light: #8c8d94;
+  --border: #e6e6e6;
+  --bg-soft: #f6f6f6;
+}
+
+.payment-page {
+  display: grid;
+  grid-template-columns: 28% 44% 28%;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+/* LEFT */
+.payment-sidebar {
+  background: var(--bg-soft);
+  border-right: 1px solid var(--border)
+
+}
+
+.payment-methods-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.method-item {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+
+}
+
+.method-item.active {
+  background: #fff;
+}
+
+.method-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.method-text .title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.method-text .subtitle {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+/* CENTER */
+.payment-content {
+  padding: 32px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 28px;
+}
+
+.upi-selection-box {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.upi-header {
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.qr-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.qr-code-placeholder img {
+  width: 90px;
+  height: 90px;
+}
+
+.qr-instruction p {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.qr-instruction small {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.pink-action-btn {
+  width: 100%;
+  background: var(--nykaa-pink);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* RIGHT */
+.payment-summary {
+  padding: 24px;
+  background: #fafafa;
+}
+
+.summary-card {
+  border: 1px solid #dfeedf;
+  background: #f9fdf9;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-row.savings {
+  color: #1aab2a;
+  font-weight: 600;
+}
+
+.summary-row.total {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.trust-indicators {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--text-light);
+  text-align: center;
+}

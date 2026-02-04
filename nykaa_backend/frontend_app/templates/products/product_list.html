@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+
+<div class="pl-breadcrumb">
+    <div class="container">
+        <a href="/">Home</a> /
+        <span>{{ current_filter|default:"All Products" }}</span>
+    </div>
+</div>
+<div class="pl-page-title">
+    <div class="container">
+        <h1>{{ current_filter|default:"All Products" }}</h1>
+    </div>
+</div>
+
+<div class="pl-container">
+
+    <!-- FILTERS -->
+    <aside class="pl-filters">
+        <div class="filter-item">
+            <div class="filter-head">Brand <span class="chevron">⌄</span></div>
+            <div class="filter-content">
+                {% for b in brands %}
+                    <a href="?brand={{ b.slug }}">{{ b.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="filter-item">
+            <div class="filter-head">Price <span class="chevron">⌄</span></div>
+            <div class="filter-content">
+                <a href="?min_price=0&max_price=500">Under ₹500</a>
+                <a href="?min_price=500&max_price=1000">₹500 – ₹1000</a>
+            </div>
+        </div>
+
+        <div class="filter-item"><div class="filter-head">Category <span class="chevron">⌄</span></div></div>
+        <div class="filter-item"><div class="filter-head">Discount <span class="chevron">⌄</span></div></div>
+        <div class="filter-item"><div class="filter-head">Concern <span class="chevron">⌄</span></div></div>
+        <div class="filter-item"><div class="filter-head">Skin Type <span class="chevron">⌄</span></div></div>
+    </aside>
+
+    <!-- PRODUCTS -->
+    <section class="pl-grid">
+        {% for product in products %}
+        {% with variant=product.variants.first %}
+
+        <div class="pl-card" id="card-{{ product.id }}">
+
+            <!-- IMAGE -->
+            <a href="{% url 'product_detail' product.slug %}" class="img-box">
+                {% if variant.images.first %}
+                    <img src="{{ variant.images.first.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+            </a>
+
+            <!-- INFO -->
+            <div class="info">
+                <p class="brand">{{ product.brand.name }}</p>
+                <p class="name">{{ product.name }}</p>
+                <div class="rating"
+                    id="plp-rating-{{ product.id }}"
+                    data-product-id="{{ product.id }}">
+                    ⭐ 0.0 <span>(0)</span>
+                </div>
+                <div class="price-box">
+                    <span class="sp">₹{{ variant.selling_price }}</span>
+                    <span class="mrp">₹{{ variant.mrp }}</span>
+                    <span class="off">{{ variant.discount_percent }}% Off</span>
+                </div>
+            </div>
+
+            <!-- INLINE PREVIEW -->
+            <div class="inline-preview" id="preview-{{ product.id }}">
+                <span class="close-preview"
+                      onclick="togglePreview('{{ product.id }}')">&times;</span>
+
+                <p class="preview-title">Select Variant</p>
+
+                <div class="variant-chips">
+                    {% for v in product.variants.all %}
+                        <div class="chip {% if forloop.first %}selected{% endif %}"
+                             data-id="{{ v.id }}"
+                             data-price="{{ v.selling_price }}"
+                             onclick="selectVariant(this, '{{ product.id }}')">
+                            {{ v.variant_name }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="preview-footer">
+                    <a href="{% url 'product_detail' product.slug %}"
+                       class="btn-outline">VIEW DETAILS</a>
+                        <button
+                            class="btn-pink"
+                            data-variant="{{ variant.id }}"
+                            onclick="addToBag(this)">
+                            MOVE TO BAG
+                        </button>
+               </div>
+            </div>
+
+                        <!-- HOVER ACTIONS -->
+                        <div class="hover-box">
+                            <div class="wishlist-btn"
+                                    data-variant="{{ variant.id }}"
+                                    data-product="{{ product.id }}"
+                                    onclick="toggleWishlist(this)">
+                                    ♡
+                            </div>
+
+                            {% if product.variants.count > 1 %}
+                                <button class="preview-trigger"
+                                        onclick="togglePreview('{{ product.id }}')">
+                                    PREVIEW
+                                </button>
+                            {% else %}
+
+                            {% csrf_token %}
+                            <input type="hidden" name="variant_id" value="{{ variant.id }}">
+                            <button
+                                class="add-btn"
+                                data-variant="{{ variant.id }}"
+                                onclick="addToBag(this)">
+                                ADD TO BAG
+                            </button>
+                    
+                            {% endif %}
+                     </div>
+
+        </div>
+
+        {% endwith %}
+        {% endfor %}
+    </section>
+</div>
+
+<script src="{% static 'js/product_list.js' %}"></script>
+{% endblock %}

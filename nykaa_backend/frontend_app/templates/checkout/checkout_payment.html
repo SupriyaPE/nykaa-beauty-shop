@@ -1,0 +1,113 @@
+{% extends "checkout/checkout_base.html" %}
+{% load static %}
+{% block step_payment %}active{% endblock %}
+
+{% block checkout_content %}
+
+<div class="payment-page">
+
+  <!-- LEFT : PAYMENT METHODS -->
+  <aside class="payment-sidebar">
+    <ul class="payment-methods-list">
+
+      <li class="method-item active">
+        <div class="method-text">
+          <span class="title">UPI</span>
+          <span class="subtitle">Google Pay, PhonePe, Paytm & more</span>
+        </div>
+      </li>
+
+      <li class="method-item disabled">
+        <div class="method-text">
+          <span class="title">Credit / Debit Card</span>
+          <span class="subtitle">Visa, Mastercard, RuPay & more</span>
+        </div>
+      </li>
+
+      <li class="method-item disabled">
+        <div class="method-text">
+          <span class="title">Net Banking</span>
+          <span class="subtitle">Pay through your favourite bank</span>
+        </div>
+      </li>
+
+      <li class="method-item disabled">
+        <div class="method-text">
+          <span class="title">Cash on Delivery</span>
+          <span class="subtitle">Pay at your doorstep</span>
+        </div>
+      </li>
+
+    </ul>
+  </aside>
+
+  <!-- CENTER : PAYMENT CONTENT -->
+  <section class="payment-content">
+    <h2 class="section-title">Choose payment method</h2>
+    <p class="section-subtitle">Choose the payment method you prefer</p>
+
+    <div class="upi-selection-box">
+
+      <div class="upi-header">
+        <span>Pay with UPI</span>
+      </div>
+
+      <div class="qr-section">
+        <div class="qr-code-placeholder">
+          <img src="{% static 'images/sample-qr.png' %}" alt="">
+        </div>
+
+        <div class="qr-instruction">
+          <p>Scan QR Code</p>
+          <small>Use any UPI app on your phone</small>
+        </div>
+      </div>
+
+      <!-- ⚠️ DO NOT CHANGE ID -->
+      <button id="pay-btn" class="pink-action-btn">
+        Scan & Pay ₹<span id="grand-total">—</span>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- RIGHT : BAG SUMMARY -->
+  <aside class="payment-summary">
+
+    <div class="summary-card">
+
+      <div class="summary-row">
+        <span>Bag</span>
+        <span><span id="item-count">—</span> Items</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Total MRP</span>
+        <span id="total-mrp">—</span>
+      </div>
+
+      <div class="summary-row savings">
+        <span>You are saving</span>
+        <span id="you-save">—</span>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>₹<span id="grand-total">—</span></span>
+      </div>
+
+    </div>
+
+    <div class="trust-indicators">
+      Authentic Products · Secure Payments · Easy Returns
+    </div>
+
+  </aside>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'checkout/checkout.js' %}"></script>
+<script src="{% static 'checkout/payment.js' %}"></script>
+
+{% endblock %}

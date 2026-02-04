@@ -1,0 +1,265 @@
+/* OVERLAY */
+.bag-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 9998;
+}
+
+/* DRAWER */
+.bag-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+.bag-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bag-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* LOGIN BANNER */
+.bag-login-banner {
+    padding: 16px;
+    background: #fff4f7;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.login-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: #fc2779;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* BODY (SCROLLABLE) */
+.bag-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* BAG ITEM */
+.bag-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.bag-item-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.bag-item-variant {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.bag-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #999;
+}
+
+.bag-item-price {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* FOOTER */
+.bag-footer {
+    border-top: 1px solid #eee;
+    padding: 16px;
+    background: #fff;
+}
+
+.footer-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bag-proceed-btn {
+    width: 100%;
+    padding: 12px;
+    background: #fc2779;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* UTILITY */
+.hidden {
+    display: none !important;
+}
+
+body.bag-open {
+    overflow: hidden;
+}
+
+
+.bag-left {
+    width: 100%;
+}
+
+.bag-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.bag-qty {
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+}
+
+.remove-btn:hover {
+    color: #fc2779;
+}
+
+.bag-pay {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* PRICE DETAILS */
+.bag-price-details {
+    padding: 16px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+}
+
+.bag-price-details h4 {
+    margin-bottom: 10px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.price-row.total {
+    font-weight: 700;
+}
+
+.discount {
+    color: green;
+}
+
+
+.qty-sheet {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 20;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;   /* 🔥 KEY FIX */
+}
+
+.qty-sheet-content {
+  width: 100%;
+  max-width: 420px;          /* 🔥 DESKTOP LIMIT */
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.qty-sheet h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.qty-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.qty-option input {
+  accent-color: #fc2779;
+}
+
+.qty-cancel {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+
+@media (max-width: 600px) {
+  .qty-sheet-content {
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+}
+

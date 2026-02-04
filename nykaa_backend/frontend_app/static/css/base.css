@@ -1,0 +1,634 @@
+/* RESET & CORE */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+.container { max-width: 1240px; margin: 0 auto; width: 100%; }
+
+/* BAR 1: TOP PINK BAR */
+.top-bar { background: #fb7cad; height: 40px; color: #000; }
+.top-bar-content { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.top-bar-left { width: 50%; height: 40px; position: relative; overflow: hidden; }
+.left-message { 
+    position: absolute; 
+    width: 100%;
+    animation: nykaaShowHide 6s infinite ease-in-out;
+}
+.left-message a { text-decoration: none; color: #000; font-size: 13px; font-weight: 500; }
+
+@keyframes nykaaShowHide {
+    0% { transform: translateY(40px); opacity: 0; }
+    15%, 85% { transform: translateY(12px); opacity: 1; }
+    100% { transform: translateY(-40px); opacity: 0; }
+}
+
+.top-bar-right { display: flex; gap: 20px; align-items: center; }
+.top-bar-right a { display: flex; align-items: center; gap: 5px; text-decoration: none; color: #000; font-size: 13px; }
+.ts-icon svg { width: 18px; height: 18px; }
+
+/* BAR 2: MAIN HEADER */
+.main-header { background: #fff; height: 70px; border-bottom: 1px solid #eee; }
+.header-content { display: flex; align-items: center; height: 100%; gap: 20px; }
+.logo img { height: 50px; }
+
+/* .main-nav { display: flex; gap: 15px; }
+.nav-link { text-decoration: none; color: #000; font-weight: 600; font-size: 13px; text-transform: uppercase; }
+.nav-link:hover { color: #fc2779; } */
+
+
+/* MEGA MENU STYLING */
+.main-nav { 
+    display: flex; 
+    gap: 20px; 
+    align-items: center;
+}
+
+/* The parent container for the dropdown */
+.nav-item { 
+    position: relative; 
+    padding: 20px 0;  
+}
+
+.nav-link { 
+    text-decoration: none; 
+    color: #000; 
+    font-weight: 600; 
+    font-size: 13px; 
+    text-transform: uppercase; 
+    display: block;
+}
+
+/* The Dropdown Menu */
+.mega-menu { 
+    display: none; 
+    position: absolute; 
+    top: 100%;    
+    left: 50%; 
+    transform: translateX(-50%); 
+    background: #fff; 
+    width: 700px;    /* Reduced width to fit better within header */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 25px; 
+    z-index: 1100; 
+    border: 1px solid #f0f0f0;
+}
+
+/* Visibility Logic */
+.nav-item:hover .mega-menu { 
+    display: block; 
+}
+
+/* Content Grid */
+.mega-grid { 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 12px; 
+}
+
+.mega-grid a {
+    text-decoration: none;
+    color: #555;
+    font-size: 13px;
+    padding: 4px 0;
+}
+
+.mega-grid a:hover {
+    color: #fc2779;
+}
+
+
+.search-box { flex: 1; position: relative; background: #f3f3f3; border-radius: 4px; display: flex; align-items: center; }
+.search-btn { background: transparent; border: none; padding-left: 5px; cursor: pointer; }
+.search-box input { background: transparent; border: none; padding: 10px; width: 90%; outline: none; font-size: 14px; }
+
+
+/* =========================
+   HEADER AUTH AREA
+========================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* IMPORTANT: allow dropdown */
+.header-actions,
+.account-wrapper {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* SIGN IN BUTTON */
+.signin-btn {
+  background-color: #fc2779;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* LOGIN DROPDOWN */
+.login-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  width: 260px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+.login-dropdown .title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.login-dropdown .subtitle {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.login-dropdown input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.primary-btn {
+  width: 100%;
+  background: #fc2779;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* USER BUTTON */
+.user-btn {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* USER DROPDOWN */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  padding: 8px 0;
+  z-index: 9999;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #333;
+}
+
+.user-dropdown a:hover {
+  background: #f7f7f7;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+.bag-btn { background: transparent; border: none; position: relative; cursor: pointer; }
+.bag-count { 
+    position: absolute; top: -5px; right: -8px; 
+    background: #fc2779; color: #fff; font-size: 11px; 
+    padding: 2px 6px; border-radius: 50%; border: 2px solid #fff; 
+    font-weight: bold;
+}
+.hidden { display: none !important; }
+.hidden { display: none; }
+
+
+
+/* BAR 3: CATEGORY BAR */
+.category-bar { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000;}
+.category-content { display: flex; justify-content: center; gap: 16px; padding: 10px 0; }
+.cat-item { position: relative; padding-bottom: 5px; }
+.cat-link { text-decoration: none; color: #595757; font-size: 12px; font-weight: 530; text-transform: uppercase; }
+.cat-link:hover { color: #fc2779; }
+.offer { color: #fc2779; font-weight: 700; font-size: 14px;}
+
+/* --- CATEGORY BAR FIXES --- */
+.category-bar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position:sticky; top: 0; z-index: 1000;
+}
+
+.category-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative; /* This keeps dropdowns relative to the whole bar if needed */
+}
+
+.cat-item {
+    position: relative; /* Trigger */
+    padding: 12px 0;    /* Bridge gap: allows mouse to move to menu without it closing */
+}
+
+/* --- THE DROPDOWN FIX --- */
+.mega-menu.category-mega {
+    display: none;
+    position: absolute;
+    top: 100%;       /* Sits perfectly under the cat-item */
+    left: 0;         /* Aligns to the left of the category name */
+    background: #fff;
+    width: 600px;    /* Nykaa style width */
+    max-width: 90vw; /* Prevents overflow on smaller screens */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 25px;
+    z-index: 1100;
+    border: 1px solid #f2f2f2;
+    margin-left: 120px;
+}
+
+/* Logic for items near the right edge to prevent overflow */
+.cat-item:nth-last-child(-n+3) .mega-menu.category-mega {
+    left: auto;
+    right: 0; /* Aligns to the right for the last few categories */
+}
+
+.cat-item:hover .mega-menu {
+    display: block;
+}
+
+/* --- CONTENT GRID --- */
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Nykaa uses 4-5 columns */
+    gap: 20px;
+    width: 100%; /* Use full width of the 800px container */
+}
+
+.mega-col h4 {
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.mega-col a {
+    display: block;
+    text-decoration: none;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.mega-col a:hover {
+    color: #fc2779;
+}
+
+
+.offer{
+  margin-top: 15px;
+}
+
+/* ================= FOOTER BASE ================= */
+.footer-band-1 {
+  background: #ffffff;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+.nykaa-footer {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #3f414d;
+}
+
+
+.newsletter-inner {
+  display: flex;
+  flex-direction: column;       
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+/* Top text */
+.newsletter-text {
+  font-size: 13px;              
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* Input + button row */
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Underline input */
+.newsletter-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #fff;
+  /* padding: 4px 2px; */
+  /* width: 180px; */
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: #dcdcdc;
+}
+
+/* SEND button */
+.newsletter-btn {
+  background: transparent;
+  border: 1.5px solid #fff;
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newsletter-btn:hover {
+  background: #fff;
+  color: #2f3136;
+} 
+
+/* COMMON */
+.footer-band {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* BAND 1 */
+.footer-top {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 25px 250px;
+  width: 100%;
+  background-color: rgb(58, 64, 71);
+
+}
+
+.top-box {
+  width: 30%;
+  text-align: center;
+}
+
+.top-box input {
+  margin-top: 8px;
+  padding: 6px;
+  width: 160px;
+  border: none;
+}
+
+.top-box button {
+  padding: 7px 12px;
+  background: #fc2779;
+  color: white;
+  border: none;
+  margin-left: 4px;
+}
+
+.app-btns img {
+  height: 32px;
+  margin: 6px;
+}
+
+/* BAND 2 */
+.footer-links {
+  background-color: rgb(140, 141, 148);
+  color: rgb(255, 255, 255);
+  padding: 50px 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.footer-links .col a {
+  display: block;
+  margin: 6px 0;
+  color: #efeff1;
+  text-decoration: none;
+  font-size: 11px;
+  justify-content: space-around;
+}
+
+.footer-links h4 {
+  font-size: 12px;
+  margin-bottom: 10px;
+  width: 20%;
+}
+
+.nykaa-logo {
+  width: 90px;
+  margin-bottom: 12px;
+}
+
+/* BAND 3 */
+.footer-trust {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 40px 200px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.footer-trust small {
+  font-size: 10px;
+  color: #bbb3b3;
+}
+
+/* BAND 4 */
+.footer-legal {
+  background: #fc2779;
+  color: white;
+  text-align: center; 
+  padding: 10px;
+  line-height: 15px;
+  font-size: 11px;
+}
+
+.footer-copy{
+  padding: 10px;
+  background: #fc2779;
+  color: white;
+  text-align: center; 
+  font-size: 12px;
+}
+
+/* BAND 5 */
+.footer-popular {
+  padding: 30px;
+  font-size: 12px;
+  color: #777;
+}
+
+.nykaa-footer {
+    position: relative;
+    z-index: 1;
+}
+/* ===================== */
+/* BAG OVERLAY */
+/* ===================== */
+.bag-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9998;
+}
+
+.bag-overlay.hidden {
+    display: none;
+}
+
+/* ===================== */
+/* BAG DRAWER */
+/* ===================== */
+.bag-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 420px;
+    max-width: 100%;
+    height: 100vh;
+
+    background: #ffffff;
+    z-index: 9999;
+
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
+
+    /* 🔥 THIS IS CRITICAL */
+    display: flex;
+    flex-direction: column;
+}
+
+.bag-drawer.hidden {
+    display: none;
+}
+
+/* ===================== */
+/* BAG HEADER */
+/* ===================== */
+.bag-header {
+    padding: 16px;
+    border-bottom: 1px solid #eaeaea;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bag-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ===================== */
+/* BAG BODY (SCROLL AREA) */
+/* ===================== */
+.bag-body {
+    flex: 1;                 /* 🔥 fills available space */
+    overflow-y: auto;
+    padding: 16px;
+}
+
+
+.page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+  min-height: 60vh;
+}
+/* ===================== */
+/* BAG ITEM */
+/* ===================== */
+.bag-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.bag-item-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.bag-item-variant {
+    font-size: 12px;
+    color: #777;
+}
+
+.bag-item-price {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ===================== */
+/* BAG FOOTER (FIXED INSIDE DRAWER) */
+/* ===================== */
+.bag-footer {
+    padding: 16px;
+    border-top: 1px solid #eee;
+    background: #fff;
+}
+
+.bag-proceed-btn {
+    width: 100%;
+    padding: 12px;
+    background: #fc2779;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ===================== */
+/* BODY LOCK */
+/* ===================== */
+body.bag-open {
+    overflow: hidden;
+}
+
+/* ===================== */
+/* UTILITY */
+/* ===================== */
+.hidden {
+    display: none;
+}

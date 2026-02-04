@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Wishlist | Nykaa{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'orders/wishlist.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="wishlist-page">
+
+    <!-- BREADCRUMBS -->
+    <div class="pl-breadcrumb">
+        <div class="container">
+            <a href="/">Home</a> /
+            <span>My Wishlist</span>
+        </div>
+    </div>
+
+    <!-- PAGE TITLE -->
+    <div class="pl-page-title">
+        <div class="container">
+            <h1>My Wishlist (<span id="wishlistCount">0</span>)</h1>
+        </div>
+    </div>
+
+    <div class="wishlist-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="account-sidebar">
+            <a href="/orders/profile/">My Profile</a>
+            <a href="/orders/orders/">My Orders</a>
+            <a href="/orders/wishlist/" class="active">My Wishlist</a>
+            <a href="#" id="logout-btn">Log Out</a>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="wishlist-content">
+
+            <!-- WISHLIST GRID -->
+            <div id="wishlistGrid" class="wishlist-grid">
+                <!-- wishlist.js injects cards here -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="wishlistEmpty" class="wishlist-empty hidden">
+                <h3>No items in your wishlist</h3>
+                <a href="/" class="start-shopping">Start Shopping</a>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+<script src="{% static 'orders/wishlist.js' %}"></script>
+
+{% endblock %}

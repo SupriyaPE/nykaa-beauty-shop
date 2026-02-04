@@ -1,0 +1,90 @@
+{% extends "checkout/checkout_base.html" %}
+{% load static %}
+
+{% block step_address %}active{% endblock %}
+
+{% block checkout_content %}
+
+<div class="checkout-layout">
+
+    <!-- ================= MAIN ADDRESS CONTENT ================= -->
+  <div class="address-page">
+
+    <!-- SAVED ADDRESSES -->
+    <div id="saved-addresses" class="saved-addresses" style="display:none;">
+      <div class="add-new-card" onclick="openAddressDrawer()">
+        + Add New Address
+      </div>
+
+      <div id="address-list">
+        <!-- injected by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= DRAWER OVERLAY ================= -->
+  <div id="drawer-backdrop" class="drawer-backdrop" onclick="closeAddressDrawer()"></div>
+
+  <div id="address-drawer" class="address-drawer">
+    <div class="drawer-header">
+      <h3>Add New Address</h3>
+      <span class="close-btn" onclick="closeAddressDrawer()">×</span>
+    </div>
+
+    <div class="drawer-body">
+      <input id="name" placeholder="Full Name">
+      <input id="mobile" placeholder="Mobile Number">
+      <input id="address_line" placeholder="Address">
+      <input id="city" placeholder="City">
+      <input id="state" placeholder="State">
+      <input id="pincode" placeholder="Pincode">
+
+      <button class="deliver-btn" onclick="saveAddressAndProceed()">
+        Deliver Here
+      </button>
+    </div>
+  </div>
+
+  
+    <!-- RIGHT -->
+    <div class="checkout-right">
+
+    <div class="price-box">
+        <h3>Bag</h3>
+
+        <div class="price-row">
+            <span>Items</span>
+            <span id="item-count">—</span>
+        </div>
+
+        <div class="price-row">
+            <span>Total MRP</span>
+            <span id="total-mrp">—</span>
+        </div>
+
+        <div class="price-row savings">
+            <span>You are saving</span>
+            <span id="you-save">—</span>
+        </div>
+
+        <div class="price-row total">
+            <span>Total</span>
+            <span id="grand-total">—</span>
+        </div>
+    </div>
+
+    <div class="trust-box">
+        ✓ Authentic Products <br>
+        ✓ Secure Payments <br>
+        ✓ Easy Returns
+    </div>
+
+</div>
+
+</div>
+
+<script src="{% static 'checkout/checkout.js' %}"></script>
+<script src="{% static 'checkout/address.js' %}"></script>
+
+{% endblock %}

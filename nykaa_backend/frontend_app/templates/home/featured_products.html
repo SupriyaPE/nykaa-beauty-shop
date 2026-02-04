@@ -1,0 +1,44 @@
+{% load static %}
+<section class="home-featured container">
+  <h2 class="section-title">Featured Products</h2>
+
+  <div class="product-grid">
+    {% for product in featured_products %}
+      {% with variant=product.variants.first %}
+      <a href="{% url 'product_detail' product.slug %}" class="product-card">
+        
+        <div class="product-image">
+          {% if variant and variant.images.first %}
+            <img src="{{ variant.images.first.image.url }}" alt="{{ product.name }}">
+          {% else %}
+            <img src="{% static 'images/placeholder-product.png' %}">
+          {% endif %}
+        </div>
+
+        <div class="product-info">
+          <p class="product-name">{{ product.name }}</p>
+          
+          {% if variant %}
+          <div class="price-row">
+            <span class="mrp">MRP: ₹{{ variant.mrp }}</span>
+            <span class="price">₹{{ variant.selling_price }}</span>
+            <span class="discount">
+              {% if variant.mrp > variant.selling_price %}
+                {{ variant.get_discount_percentage }}% Off
+              {% endif %}
+            </span>
+          </div>
+          {% endif %}
+
+         <div class="rating-row"
+            id="home-rating-{{ product.id }}"
+            data-product-id="{{ product.id }}">
+          <span class="stars"></span>
+          <span class="rating-count">(0)</span>
+        </div>
+        </div>
+      </a>
+      {% endwith %}
+    {% endfor %}
+  </div>
+</section>

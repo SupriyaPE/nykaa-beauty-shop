@@ -1,0 +1,91 @@
+{% extends "checkout/checkout_base.html" %}
+{% load static %}
+
+{% block step_account %}active{% endblock %}
+
+{% block checkout_content %}
+
+<div class="checkout-container">
+    <div class="checkout-main">
+        <h2 class="section-title">Account</h2>
+        <p class="section-subtitle">To place your order now, log into your existing account or signup</p>
+
+        <div class="account-options-grid">
+            <div class="account-card">
+                <div class="card-header-bg">
+                    <div class="card-icon-wrapper">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Have an account?</h3>
+                    <p>Reward points on every order you place</p>
+                        <button type="button" class="btn-outline-dark" onclick="window.location.href='/accounts/login/?next=/checkout/address/'">
+                           Sign Up
+                        </button>
+                </div>
+            </div>
+
+            <div class="account-card">
+                <div class="card-header-bg">
+                    <div class="card-icon-wrapper">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>New to Nykaa?</h3>
+                    <p>Get ₹300 off* on your 1st App Order. Use code NFAPP300</p>
+                    <button type="button" class="btn-pink" onclick="window.location.href='/accounts/login/?next=/checkout/address/'">
+                            Log In
+                    </button>
+                </div>
+            </div>
+
+            <div class="account-card">
+                <div class="card-header-bg guest-bg">
+                    <div class="guest-illustration">
+                        <div class="dot-box"></div>
+                        <div class="cursor-pointer"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Checkout as guest?</h3>
+                    <p>Offers & Discounts not available for guest user.</p>
+                    <button class="btn-outline-pink" onclick="continueAsGuest()">Continue as guest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-sidebar">
+    <div class="summary-box">
+        <div class="summary-header">
+            <span>Bag</span>
+            <span class="item-count">
+                <span id="co-item-count">0</span> Items
+            </span>
+        </div>
+
+        <div class="price-details-header">
+            <span>Price Details</span>
+            <span class="total-price">
+                ₹<span id="co-you-pay">0</span>
+            </span>
+        </div>
+
+        <div class="savings-banner" id="co-savings">
+            You are saving ₹0
+        </div>
+
+        <div class="trust-indicators">
+            <div class="trust-item">
+                <span>Authentic Products. Secure Payments. Easy Return & Exchange</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="{% static 'checkout/account.js' %}"></script>
+<script src="{% static 'checkout/checkout.js' %}"></script>
+
+
+{% endblock %}

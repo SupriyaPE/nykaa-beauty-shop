@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Placed | Nykaa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'orders/success.css' %}">
+</head>
+<body>
+
+<div class="success-wrapper">
+  <div class="success-card">
+
+    <!-- ICON -->
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <!-- TITLE -->
+    <h1>Your Order is Confirmed!</h1>
+    <p class="subtitle">
+      We’ll send you a shipping confirmation once your order is dispatched.
+    </p>
+
+    {% if order %}
+      <div class="delivery-info">
+        🚚 Expected delivery in
+        <strong>{{ order.expected_delivery_days }} days</strong>
+      </div>
+    {% endif %}
+
+    <!-- ACTIONS -->
+    <div class="success-actions">
+      <a href="/orders/orders/" class="primary-btn">
+        Check Order Status
+      </a>
+
+      <a href="/" class="secondary-link">
+        Continue Shopping
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

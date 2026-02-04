@@ -1,0 +1,15 @@
+{% load static %}
+<section class="home-brands">
+
+  <div class="brand-grid">
+    {% for brand in brands %}
+      <a href="{% url 'brand_products' brand.slug %}" class="brand-card">
+        {% if brand.logo %}
+        <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
+        {% else %}
+        <div class="brand-name-only">{{ brand.name }}</div>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+</section>

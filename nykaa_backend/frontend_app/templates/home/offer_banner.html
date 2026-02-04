@@ -1,0 +1,7 @@
+{% if offer_banner %}
+<section class="home-offer-banner">
+  <a href="{{ offer_banner.redirect_url }}">
+    <img src="{{ offer_banner.image.url }}" alt="{{ offer_banner.title }}">
+  </a>
+</section>
+{% endif %}

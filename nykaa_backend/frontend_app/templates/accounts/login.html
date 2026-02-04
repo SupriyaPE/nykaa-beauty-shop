@@ -1,0 +1,56 @@
+{% extends "checkout/checkout_base.html" %}
+{% load static %}
+
+{% block checkout_content %}
+<div class="auth-wrapper">
+  <!-- LEFT PANEL -->
+  <div class="auth-left"></div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-box">
+      <img src="{% static 'images/nykaa-logo.png' %}" class="auth-logo" />
+
+      <h2>Login or Signup</h2>
+      <p class="subtitle">Get started & grab best offers on top brands!</p>
+
+      <!-- EMAIL -->
+      <input
+        type="email"
+        id="login-email"
+        placeholder="Enter your email"
+        class="auth-input"
+      />
+
+      <button type="button" id="send-otp-btn" class="auth-btn">
+        Get OTP
+      </button>
+
+      <!-- OTP -->
+      <div id="otp-section" class="hidden">
+        <input
+          type="text"
+          id="otp-input"
+          placeholder="Enter OTP"
+          maxlength="6"
+          class="auth-input"
+        />
+
+        <button  type="button" id="verify-otp-btn" class="auth-btn">
+          Verify OTP
+        </button>
+      </div>
+
+      <p class="terms">
+        By continuing, I agree to Nykaa’s
+        <a href="#">T&Cs</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+<script src="{% static 'checkout/checkout.js' %}"></script>
+
+
+{% endblock %}

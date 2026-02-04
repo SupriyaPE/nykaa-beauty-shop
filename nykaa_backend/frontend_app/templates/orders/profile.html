@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Profile | Nykaa{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'orders/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="account-page">
+
+    <!-- BREADCRUMB -->
+    <div class="pl-breadcrumb">
+        <div class="container">
+            <a href="/">Home</a> /
+            <span>My Profile</span>
+        </div>
+    </div>
+
+    <div class="account-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="account-sidebar">
+            <a href="/orders/profile/" class="active">My Profile</a>
+            <a href="/orders/orders/">My Orders</a>
+            <a href="/orders/wishlist/">My Wishlist</a>
+            <a href="#" id="logout-btn">Log Out</a>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="profile-content">
+
+            <!-- PROFILE CARD -->
+            <div class="profile-card">
+                <div class="avatar">
+                </div>
+
+                <div class="profile-info">
+                    <h2 id="profileName"></h2>
+                    <p>Email: <span id="profileEmail"></span></p>
+                    <p>Mobile: <span id="profileMobile">—</span></p>
+                </div>
+
+                <button class="edit-btn">Edit</button>
+            </div>
+
+            <!-- ADDRESS SECTION -->
+            <div class="address-section">
+                <h3>My Addresses</h3>
+
+                <div class="no-address">
+                    <p>No Address Found</p>
+                    <button class="add-address-btn">ADD NEW ADDRESS</button>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<script src="{% static 'orders/profile.js' %}"></script>
+{% endblock %}

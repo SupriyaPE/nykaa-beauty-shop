@@ -1,0 +1,148 @@
+/* ===========================
+   NYKAA CHECKOUT – BASE
+   (Stepper + Layout only)
+=========================== */
+
+:root {
+  --nykaa-pink: #e80071;
+  --text-dark: #111;
+  --text-grey: #312f2f;
+  --border-light: #eaeaea;
+  --bg-light: #f6f6f6;
+  --white: #ffffff;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.checkout-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.checkout-header-inner {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 8px 24px;  
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.checkout-logo img {
+  height: 50px;
+  margin-left: 60px;
+  
+}
+
+/* ===========================
+   STEPPER
+=========================== */
+
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-left: 15%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.step span {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #b7b1b1;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-line {
+  width: 200px;
+  height: 1px;
+  background: #d8d6d6;
+}
+
+/* Active step */
+.step.active {
+  color: var(--nykaa-pink);
+  font-weight: 600;
+}
+
+.step.active span {
+  background: var(--nykaa-pink);
+  color: #fff;
+  border-color: var(--nykaa-pink);
+}
+
+/* ===========================
+   PAGE DIVIDER
+=========================== */
+
+.checkout-divider {
+  border: none;
+  height: 1px;
+  background: var(--border-light);
+  margin: 0;
+}
+
+/* ===========================
+   MAIN WRAPPER
+=========================== */
+
+.checkout-wrapper {
+  /* max-width: 2500px; */
+  margin: 32px auto;
+  /* padding: 0 20px; */
+ 
+  
+}
+
+/* LEFT CONTENT HOLDER */
+.checkout-left {
+  width: 100%;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+  .checkout-header-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .checkout-steps {
+    gap: 20px;
+  }
+
+  .step-line {
+    width: 32px;
+  }
+}

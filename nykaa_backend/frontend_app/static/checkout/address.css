@@ -1,0 +1,307 @@
+/* ===========================
+   ADDRESS PAGE – NYKAA STYLE
+=========================== */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 28px;
+  max-width: 1180px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+/* LEFT */
+.checkout-left {
+  background: #fff;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+/* Titles */
+.checkout-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.checkout-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===========================
+   SAVED ADDRESSES
+=========================== */
+
+#saved-addresses h3,
+#address-form-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Address list grid */
+#address-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  /* margin-bottom: 20px; */
+  margin-top: 30px;
+}
+
+/* Address card */
+.address-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: #fff;
+  transition: box-shadow 0.25s ease;
+}
+
+.address-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.address-card p {
+  margin: 0 0 6px;
+  color: #444;
+}
+
+.address-card strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Deliver button inside card */
+.address-card button {
+  margin-top: 10px;
+  background: #e80071;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.address-card button:hover {
+  background: #d10066;
+}
+
+/* ===========================
+   ADD NEW ADDRESS CARD
+=========================== */
+
+.add-new-card {
+  border: 1.5px dashed #e80071;
+  color: #e80071;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.25s ease;
+}
+
+.add-new-card:hover {
+  background: #fff5fa;
+}
+
+/* ===========================
+   ADDRESS FORM
+=========================== */
+
+#address-form-section {
+  max-width: 520px;
+}
+
+#address-form-section input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+#address-form-section input:focus {
+  outline: none;
+  border-color: #e80071;
+}
+
+/* Deliver here button */
+#address-form-section button {
+  margin-top: 8px;
+  width: 100%;
+  background: #e80071;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#address-form-section button:hover {
+  background: #d10066;
+}
+
+/* ===========================
+   RIGHT SIDE – BAG SUMMARY
+=========================== */
+
+.checkout-right {
+  width: 340px;
+  position: sticky;
+  top: 100px;
+}
+
+.price-box {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.price-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price-row.savings {
+  color: #008000;
+  font-weight: 600;
+}
+
+.price-row.total {
+  font-size: 15px;
+  font-weight: 700;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 12px;
+}
+
+.trust-box {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Trust box */
+.trust-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+/* ===== Overlay ===== */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 999;
+}
+
+/* ===== Drawer ===== */
+.address-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 380px;
+  height: 100%;
+  background: #fff;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-drawer.open {
+  right: 0;
+}
+
+.drawer-backdrop.show {
+  display: block;
+}
+
+/* Header */
+.drawer-header {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Body */
+.drawer-body {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.drawer-body input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 35px;
+  border: 1px solid #ddd;
+}
+
+.deliver-btn {
+  width: 100%;
+  background: #e80071;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 50%;
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #address-list {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-right {
+    position: static;
+  }
+}

@@ -1,0 +1,571 @@
+.pd-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: Inter, sans-serif;
+}
+
+.pd-breadcrumb {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+}
+.pd-breadcrumb a {
+  color: #fc2779;
+  text-decoration: none;
+}
+.pd-breadcrumb span {
+  margin: 0 6px;
+}
+
+.pd-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.pd-gallery {
+  display: flex;
+  position: sticky;
+  top: 20px;
+}
+
+.pd-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumb {
+  width: 65px;
+  height: 65px;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+.thumb.active {
+  border: 2px solid #fc2779;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pd-main {
+  width: 450px;
+  height: 500px;
+  margin-left: 15px;
+  border: 1px solid #eee;
+  position: relative;
+  cursor: crosshair;
+}
+.pd-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.zoom-plus {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #fc2779;
+}
+
+#zoom-lens {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(252,39,121,.15);
+  border: 1px solid #fc2779;
+  display: none;
+}
+
+#zoom-result {
+  width: 500px;
+  height: 500px;
+  margin-left: 20px;
+  border: 1px solid #ddd;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.pd-right {
+  flex: 1;
+}
+
+.brand-name {
+  color: #fc2779;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.product-title {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.rating-row {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.price-section {
+  margin: 15px 0;
+}
+
+.selling-price {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.mrp {
+  margin-left: 10px;
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount {
+  margin-left: 10px;
+  color: #ec4077;
+  font-weight: 700;
+}
+
+.tax-note {
+  font-size: 13px;
+  color: #666;
+}
+
+.variant-section {
+  margin-top: 20px;
+}
+
+.variant-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.variant-box {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+}
+
+.variant-box.active {
+  border-color: #fc2779;
+  color: #fc2779;
+}
+
+.add-to-bag-btn {
+  width: 100%;
+  margin: 25px 0;
+  padding: 18px;
+  background: #fc2779;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-bag-btn.added {
+  background: #ea256d;
+  cursor: default;
+}
+
+.delivery-check {
+  background: #fafafa;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+
+.pincode-box {
+  display: flex;
+  margin-top: 10px;
+}
+
+.pincode-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.pincode-box button {
+  padding: 0 18px;
+  border: 1px solid #ddd;
+  border-left: none;
+  background: white;
+  color: #fc2779;
+  font-weight: 700;
+}
+
+.pd-description-area {
+  margin-top: 60px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #fc2779;
+  border-bottom: 2px solid #fc2779;
+  font-weight: 700;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+  display: block;.pd-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: Inter, sans-serif;
+}
+
+.pd-breadcrumb {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+}
+.pd-breadcrumb a {
+  color: #fc2779;
+  text-decoration: none;
+}
+.pd-breadcrumb span {
+  margin: 0 6px;
+}
+
+.pd-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.pd-gallery {
+  display: flex;
+  position: sticky;
+  top: 20px;
+}
+
+.pd-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumb {
+  width: 65px;
+  height: 65px;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+.thumb.active {
+  border: 2px solid #fc2779;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pd-main {
+  width: 450px;
+  height: 500px;
+  margin-left: 15px;
+  border: 1px solid #eee;
+  position: relative;
+  cursor: crosshair;
+}
+.pd-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.zoom-plus {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #fc2779;
+}
+
+#zoom-lens {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(252,39,121,.15);
+  border: 1px solid #fc2779;
+  display: none;
+}
+
+#zoom-result {
+  width: 500px;
+  height: 500px;
+  margin-left: 20px;
+  border: 1px solid #ddd;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.pd-right {
+  flex: 1;
+}
+
+.brand-name {
+  color: #fc2779;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.product-title {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.rating-row {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.price-section {
+  margin: 15px 0;
+}
+
+.selling-price {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.mrp {
+  margin-left: 10px;
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount {
+  margin-left: 10px;
+  color: #ec4077;
+  font-weight: 700;
+}
+
+.tax-note {
+  font-size: 13px;
+  color: #666;
+}
+
+.variant-section {
+  margin-top: 20px;
+}
+
+.variant-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.variant-box {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+}
+
+.variant-box.active {
+  border-color: #fc2779;
+  color: #fc2779;
+}
+
+.add-to-bag-btn {
+  width: 100%;
+  margin: 25px 0;
+  padding: 18px;
+  background: #fc2779;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-bag-btn.added {
+  background: #ea256d;
+  cursor: default;
+}
+
+.delivery-check {
+  background: #fafafa;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+
+.pincode-box {
+  display: flex;
+  margin-top: 10px;
+}
+
+.pincode-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.pincode-box button {
+  padding: 0 18px;
+  border: 1px solid #ddd;
+  border-left: none;
+  background: white;
+  color: #fc2779;
+  font-weight: 700;
+}
+
+.pd-description-area {
+  margin-top: 60px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #fc2779;
+  border-bottom: 2px solid #fc2779;
+  font-weight: 700;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+
+.rating-row {
+  font-size: 14px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.rating-row span {
+  color: #777;
+  margin-left: 6px;
+}
+
+.reviews-section {
+  margin-top: 16px;
+}
+
+.review-card {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.review-user {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.review-rating {
+  color: #f5a623;
+  font-size: 13px;
+}
+
+.review-comment {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #444;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ===============================
+   PDP TABS
+=============================== */
+.pd-description-area {
+  margin-top: 24px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #555;
+  position: relative;
+}
+
+.tab-btn.active {
+  color: #e80071; /* Nykaa pink */
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: #e80071;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Reviews spacing */
+.reviews-section {
+  margin-top: 16px;
+}
+}
+
+
+

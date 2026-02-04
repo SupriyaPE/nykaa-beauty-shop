@@ -1,0 +1,9 @@
+<section class="home-hero">
+  <div class="hero-track">
+    {% for banner in hero_banners %}
+      <a class="hero-item" href="{{ banner.redirect_url }}">
+        <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+      </a>
+    {% endfor %}
+  </div>
+</section>

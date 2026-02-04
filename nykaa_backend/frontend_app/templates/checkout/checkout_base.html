@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | Nykaa</title>
+    {% load static %}
+
+    <!-- BASE CHECKOUT CSS -->
+    <link rel="stylesheet" href="{% static 'checkout/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/account.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/address.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/payment.css' %}">
+</head>
+<body>
+
+<!-- ================= CHECKOUT HEADER ================= -->
+<header class="checkout-header">
+    <div class="checkout-header-inner">
+
+        <!-- Logo -->
+        <div class="checkout-logo">
+            <img src="{% static 'images/nykaa-logo.png' %}" alt="Nykaa">
+        </div>
+
+        <!-- Steps -->
+        <div class="checkout-steps">
+            <div class="step {% block step_account %}{% endblock %}">
+                <span>1</span>
+                <p>Sign Up</p>
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step {% block step_address %}{% endblock %}">
+                <span>2</span>
+                <p>Address</p>
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step {% block step_payment %}{% endblock %}">
+                <span>3</span>
+                <p>Payment</p>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<hr class="checkout-divider">
+
+<!-- ================= CHECKOUT LAYOUT ================= -->
+<section class="checkout-wrapper">
+
+    <!-- LEFT SIDE (DYNAMIC CONTENT) -->
+    <div class="checkout-left">
+        {% block checkout_content %}
+        {% endblock %}
+    </div>
+
+</section>
+
+<!-- BASE CHECKOUT JS -->
+<script src="{% static 'checkout/checkout.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+
+
+</body>
+</html>

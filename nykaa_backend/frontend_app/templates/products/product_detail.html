@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="pd-container">
+
+    <!-- BREADCRUMB -->
+    <nav class="pd-breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="{% url 'category_products' product.category.slug %}">
+            {{ product.category.name }}
+        </a>
+        <span>›</span>
+        <span>{{ product.name }}</span>
+    </nav>
+
+    <div class="pd-wrapper">
+
+        <!-- LEFT -->
+        <div class="pd-left">
+            <div class="pd-gallery">
+
+                <div class="pd-thumbs">
+                    {% for img in images %}
+                    <div class="thumb {% if forloop.first %}active{% endif %}"
+                         data-img="{{ img.image.url }}">
+                        <img src="{{ img.image.url }}" alt="">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="pd-main" id="img-container">
+                    <img id="main-img" src="{{ primary_image.image.url }}">
+                    <div id="zoom-lens"></div>
+                    <span class="zoom-plus">+</span>
+                </div>
+
+                <div id="zoom-result"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="pd-right">
+
+            <h4 class="brand-name">{{ product.brand.name }}</h4>
+            <h1 class="product-title">{{ product.name }}</h1>
+
+            <div class="rating-row">
+               <div class="rating-row pd-rating"
+                    id="pdp-rating"
+                    data-product-id="{{ product.id }}">
+                </div>
+            </div>
+
+            <div class="price-section">
+                <span class="selling-price" id="price">
+                    ₹{{ selected_variant.selling_price }}
+                </span>
+                <span class="mrp">₹{{ selected_variant.mrp }}</span>
+                <span class="discount">
+                    {{ selected_variant.discount_percent }}% Off
+                </span>
+                <p class="tax-note">inclusive of all taxes</p>
+            </div>
+
+            {% if variants|length > 1 %}
+            <div class="variant-section">
+                <p class="variant-label">
+                    Select Variant ({{ variants|length }})
+                </p>
+
+                <div class="variant-grid">
+                    {% for v in variants %}
+                    <button
+                        type="button"
+                        class="variant-box {% if v == selected_variant %}active{% endif %}"
+                        data-price="{{ v.selling_price }}"
+                        data-variant="{{ v.id }}">
+                        {{ v.variant_name }}
+                    </button>
+                   {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <input type="hidden"
+                    id="variant-input"
+                    value="{{ selected_variant.id }}">
+
+                <button
+                type="button"
+                class="add-to-bag-btn"
+                id="pd-add-btn"
+                data-variant="{{selected_variant.id}}">
+                ADD TO BAG
+                </button>
+            
+
+            <!-- PINCODE -->
+            <div class="delivery-check">
+                <p class="delivery-title">Check Delivery</p>
+                <div class="pincode-box">
+                    <input type="text" id="pincode" placeholder="Enter Pincode">
+                    <button type="button" id="check-btn">CHECK</button>
+                </div>
+                <p id="pincode-result"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+  <div class="pd-description-area">
+
+    <!-- TABS HEADER -->
+    <div class="tabs-header">
+        <button class="tab-btn active" data-tab="description">
+        Product Description
+        </button>
+        <button class="tab-btn" data-tab="reviews">
+        Ratings & Reviews
+        </button>
+    </div>
+
+    <!-- PRODUCT DESCRIPTION TAB -->
+    <div class="tab-content active" id="tab-description">
+        {{ product.description|linebreaks }}
+    </div>
+
+    <!-- REVIEWS TAB -->
+    <div class="tab-content" id="tab-reviews">
+
+        <div class="rating-row"
+            id="rating-summary"
+            data-product-id="{{ product.id }}">
+        Loading ratings...
+        </div>
+
+        <div id="reviews-section" class="reviews-section"></div>
+
+    </div>
+
+    </div>
+
+</div>
+
+<script src="{% static 'js/product_zoom.js' %}"></script>
+{% endblock %}

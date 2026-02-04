@@ -1,0 +1,369 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Nykaa{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bag.css' %}">
+
+  {% block page_css %}{% endblock %}
+  {% block extra_js %}{% endblock %}
+</head>
+<body>
+
+
+<div class="top-bar">
+    <div class="container top-bar-content">
+        <div class="top-bar-left">
+            <div class="left-message">
+                <a href="#">BEAUTY BONANZA Get Your Amazing Deals!</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <a href="#">
+                <span class="ts-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity=".92" fill="#000">
+                             <path d="M17.25 3.5v17H6.75v-17h10.5zm.5-1.5H6.25a1 1 0 00-1 1v18a1 1 0 001 1h11.5a1 1 0 001-1V3a1 1 0 00-1-1z"></path>
+                             <path d="M13 6h-2a.75.75 0 110-1.5h2A.75.75 0 1113 6zM12 19.48a1 1 0 100-2 1 1 0 000 2z"></path>
+                        </g>
+                    </svg>
+                </span>
+                <span class="ts-text">Get App</span>
+              </a>
+                  <a href="#">
+                  <span class="ts-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <title>giftcard icon</title>
+                          <g opacity=".92" fill="#000">
+                              <path d="M16 15.6h2.2a.6.6 0 000-1.2H16a.6.6 0 000 1.2z"></path>
+                              <path d="M21 4.5H3a1 1 0 00-1 1v13a1 1 0 001 1h18a1 1 0 001-1v-13a1 1 0 00-1-1zM3.5 6h4.9v1.66a2.12 2.12 0 00-.69-.47 1.9 1.9 0 00-.39-.11 1.75 1.75 0 00-.4 0c-.258 0-.513.05-.75.15a2.12 2.12 0 00-.69.47 2.23 2.23 0 000 3c.078.077.166.144.26.2H3.5V6zM8 10.32a4.709 4.709 0 01-1.7-.45 1 1 0 010-1.38.86.86 0 01.61-.25.85.85 0 01.61.25A4.47 4.47 0 018 10.32zM8.4 18H3.5v-5.9H7l-1.42 1.38a.59.59 0 000 .85.6.6 0 00.84 0l2-2L8.4 18zm12.1 0H9.6v-5.65l2 2a.6.6 0 00.974-.656.59.59 0 00-.134-.194l-1.39-1.4h9.45V18zM10 10.32a5.16 5.16 0 01.46-1.83.85.85 0 01.61-.25.86.86 0 01.61.25 1 1 0 010 1.37 4.42 4.42 0 01-1.68.46zm10.48.58h-8.15a1.45 1.45 0 00.23-.19 2 2 0 00.26-.33 2.22 2.22 0 000-2.38 1.64 1.64 0 00-.26-.33 1.579 1.579 0 00-.32-.27 1.9 1.9 0 00-.37-.2 2.13 2.13 0 00-1.57 0 2.23 2.23 0 00-.69.47V6H20.5l-.02 4.9z"></path>
+                          </g>
+                      </svg>
+                  </span>
+                  <span class="ts-text">Gift Card</span>
+              </a>
+            <a href="#">
+                <span class="ts-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity=".92" fill="#000">
+                             <path d="M12 8a2.01 2.01 0 110 4 2.01 2.01 0 110-4zm0-1.5a4 4 0 00-.68.06 3.5 3.5 0 00.68 6.93 3.5 3.5 0 000-7v.01z"></path>
+                             <path d="M12 3.5a6.94 6.94 0 012.22.37 6.53 6.53 0 014.28 6.47 6.6 6.6 0 01-1.78 4.49L12 20.24l-4.7-5.38a6.94 6.94 0 01-1.8-4.65A6.62 6.62 0 0112 3.5zM12 2a8.09 8.09 0 00-8 8.21 8.42 8.42 0 002.15 5.61l5.1 5.83a1.001 1.001 0 001.5 0l5.1-5.83A8.05 8.05 0 0020 10.36a8 8 0 00-5.31-7.91A8.34 8.34 0 0012 2z"></path>
+                        </g>
+                    </svg>
+                </span>
+                <span class="ts-text">Store & Events</span>
+            </a>
+            <a href="#">
+                <span class="ts-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity=".92" fill="#000">
+                            <path d="M12 4.5c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5S7.9 4.5 12 4.5zM12 3c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9z"></path>
+                            <path d="M12 16.4a.8.8 0 100-1.6.8.8 0 000 1.6zM12 13.6c-.4 0-.7-.3-.8-.8v-1.4c0-.4.3-.8.8-.8.6 0 1.2-.5 1.2-1.1 0-.6-.5-1.2-1.1-1.2-.6 0-1.2.5-1.2 1.1 0 .4-.3.8-.8.8s-.7-.2-.7-.7c0-1.5 1.2-2.6 2.7-2.6 1.5 0 2.6 1.2 2.6 2.7 0 1.2-.8 2.2-1.9 2.5v.8c-.1.4-.4.7-.8.7z"></path>
+                        </g>
+                    </svg>
+                </span>
+                <span class="ts-text">Help</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<header class="main-header">
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/"><img src="{% static 'images/nykaa-logo.png' %}" alt="Nykaa"></a>
+        </div>
+
+       <nav class="main-nav">
+          <a href="{% url 'home' %}" class="nav-link">Categories</a>
+          
+          <div class="nav-item">
+              <a href="#" class="nav-link">Brands</a>
+              <div class="mega-menu">
+                  <div class="mega-grid">
+                      {% for brand in header_brands %}
+                      <a href="{% url 'brand_products' brand.slug %}">{{ brand.name }}</a>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+
+          <div class="nav-item">
+              <a href="#" class="nav-link">Luxe</a>
+              <div class="mega-menu">
+                  <div class="mega-grid">
+                      {% for brand in luxe_brands %}
+                      <a href="{% url 'brand_products' brand.slug %}">{{ brand.name }}</a>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+
+          <a href="#" class="nav-link">Nykaa Fashion</a>
+          <a href="#" class="nav-link">Beauty Advice</a>
+      </nav>
+
+      <form class="search-box" method="get" action="{% url 'all_products' %}">
+        <div class="search-box">
+            <button type="submit" class="search-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.54 19.97L16.3 14.73C17.36 13.44 17.99 11.79 17.99 9.99C17.99 5.85 14.64 2.5 10.5 2.5C6.35 2.5 3 5.85 3 9.99C3 14.13 6.35 17.48 10.49 17.48C12.29 17.48 13.94 16.84 15.23 15.79L20.47 21.03C20.62 21.18 20.81 21.25 21 21.25C21.19 21.25 21.38 21.18 21.53 21.03C21.83 20.74 21.83 20.26 21.54 19.97ZM10.49 15.98C7.19 15.98 4.5 13.29 4.5 9.99C4.5 6.69 7.19 4 10.49 4C13.79 4 16.48 6.69 16.48 9.99C16.48 13.3 13.8 15.98 10.49 15.98Z" fill="black"></path>
+                </svg>
+            </button>
+            <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search on Nykaa">
+        </div>
+      </form>  
+
+        <div class="header-actions">
+           <div class="account-wrapper" id="auth-container">
+
+                <!-- SIGN IN (GUEST) -->
+                <button id="signin-btn" class="signin-btn">Sign in</button>
+
+                <div id="login-dropdown" class="login-dropdown hidden">
+                    <p class="title">Login or Signup</p>
+                    <p class="subtitle">Register now and get Nykaa reward points</p>
+
+                    <input
+                    type="email"
+                    id="login-email"
+                    placeholder="Enter your email"
+                    />
+
+                    <button id="send-otp-btn" class="primary-btn">
+                    Send OTP
+                    </button>
+
+                    <!-- OTP SECTION (hidden initially) -->
+                    <div id="otp-section" class="hidden">
+                    <input
+                        type="text"
+                        id="otp-input"
+                        placeholder="Enter OTP"
+                        maxlength="6"
+                    />
+                    <button id="verify-otp-btn" class="primary-btn">
+                        Verify OTP
+                    </button>
+                    </div>
+
+                </div>
+
+                <!-- USER (LOGGED IN) -->
+                <div id="user-wrapper" class="user-wrapper hidden">
+                    <button id="user-btn" class="user-btn">
+                        <span class="arrow-down">👤</span>    
+                        <span id="user-name">Account</span>
+                    </button>
+
+                    <div id="user-dropdown" class="user-dropdown hidden">
+                        <a href="{% url 'account-profile' %}">Profile</a>
+                        <a href="{% url 'account-orders' %}">Orders</a>
+                        <a href="{% url 'account-wishlist' %}">Wishlist</a>
+                        <hr>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+
+            </div>
+                        
+            <div class="bag-wrapper">
+                <button type="button" class="bag-btn" id="header-bag-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.5 7.2H16.2V6.9C16.3 4.5 14.4 2.5 12 2.5C9.6 2.6 7.8 4.5 7.8 6.9V7.2H3.5C2.9 7.2 2.5 7.6 2.5 8.2V16.4C2.5 19.2 4.7 21.4 7.5 21.4H16.5C19.3 21.4 21.5 19.2 21.5 16.4V8.2C21.5 7.7 21.1 7.2 20.5 7.2ZM9.3 6.9C9.3 5.4 10.5 4.1 12 4C13.5 4.1 14.7 5.4 14.7 6.9V7.2H9.3V6.9ZM20 16.5C20 18.4 18.4 20 16.5 20H7.5C5.6 20 4 18.4 4 16.5V8.7H7.8V10.7C7.6 10.9 7.5 11.2 7.5 11.4C7.5 12 8 12.4 8.5 12.4C9 12.4 9.5 11.9 9.5 11.4C9.5 11.1 9.4 10.9 9.2 10.7V8.7H14.6V10.6C14.4 10.8 14.3 11.1 14.3 11.4C14.3 12 14.7 12.5 15.3 12.5C15.9 12.5 16.4 12.1 16.4 11.5C16.4 11.2 16.3 11 16.1 10.8V8.8H20V16.5Z" fill="black"></path>
+                    </svg>
+                    <span id="global-bag-count" class="bag-count"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<nav class="category-bar">
+    <div class="container category-content">
+        {% for cat in header_categories %}
+        <div class="cat-item"> <a href="{% url 'category_products' cat.slug %}" class="cat-link">{{ cat.name }}</a>
+            
+            {% if cat.children.exists %}
+            <div class="mega-menu category-mega">
+                <div class="mega-grid">
+                    {% for sub in cat.children.all %}
+                    <div class="mega-col">
+                        <h4>{{ sub.name }}</h4>
+                        {% for subchild in sub.children.all %}
+                        <a href="{% url 'category_products' subchild.slug %}">{{ subchild.name }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <span class="offer">OFFERS</span>
+    </div>
+</nav>
+
+<main class="page-content">
+    {% block content %}{% endblock %}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="nykaa-footer">
+     <!-- BAND 1 -->
+  <div class="footer-band-1">
+    Nykaa – The Online Beauty Store
+  </div>
+
+  <!-- BAND 1 -->
+  <div class="footer-band footer-top">
+      <div class="nykaa-newsletter">
+         <div class="newsletter-inner">
+            <div class="newsletter-text">
+              ✉ Get special discount on your inbox
+            </div>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your Email" class="newsletter-input">
+                <button class="newsletter-btn">SEND</button>
+            </div>
+        </div>
+     </div>
+
+    <div class="top-box">
+      <span class="icon">📱</span>
+      <span>Experience the Nykaa mobile app</span>
+      <div class="app-btns">
+        <img src="/static/images/google-play.svg">
+        <img src="/static/images/app-store.svg">
+      </div>
+    </div>
+
+    <div class="top-box">
+      <span class="icon">📞</span>
+      <p>
+        For any help, you may call us at<br>
+        <strong>1800-267-4444</strong><br>
+        <small>(All days, 8 AM to 10 PM)</small>
+      </p>
+    </div>
+  </div>
+
+  <!-- BAND 2 -->
+  <div class="footer-band footer-links">
+
+    <div class="col">
+      <img src="/static/images/nykaa-logo.svg" class="nykaa-logo">
+      <a>Who are we?</a>
+      <a>Careers</a>
+      <a>Authenticity</a>
+      <a>Press</a>
+      <a>Testimonials</a>
+      <a>Nykaa CSR</a>
+      <a>Sustainability</a>
+    </div>
+
+    <div class="col">
+      <h4>Help</h4>
+      <a>Contact Us</a>
+      <a>FAQs</a>
+      <a>Store Locator</a>
+      <a>Cancellation & Return</a>
+      <a>Shipping & Delivery</a>
+      <a>Sell on Nykaa</a>
+    </div>
+
+    <div class="col">
+      <h4>Inspire Me</h4>
+      <a>Beauty Book</a>
+      <a>Games Board</a>
+      <a>Buying Guides</a>
+    </div>
+
+    <div class="col">
+      <h4>Quick Links</h4>
+      <a>Offer Zone</a>
+      <a>New Launches</a>
+      <a>Nykaa Man</a>
+      <a>Nykaa Fashion</a>
+      <a>Nykaa Pro</a>
+      <a>Sitemap</a>
+    </div>
+
+    <div class="col">
+      <h4>Top Categories</h4>
+      <a>Makeup</a>
+      <a>Skin</a>
+      <a>Hair</a>
+      <a>Bath & Body</a>
+      <a>Appliances</a>
+      <a>Health & Wellness</a>
+    </div>
+
+  </div>
+
+  <!-- BAND 3 -->
+  <div class="footer-band footer-trust">
+    <div>🚚 <br>FREE SHIPPING<br><small>On orders above ₹299</small></div>
+    <div>↩ <br>EASY RETURNS<br><small>15-Day Return Policy</small></div>
+    <div>✔ <br>100% AUTHENTIC<br><small>Products Sourced Directly</small></div>
+    <div>🏷 <br>1900+ BRANDS<br><small>1.2 Lakh+ Products</small></div>
+    <div class="social">
+      <small>Show us some love ❤</small>
+      <div>🌐 📘 📸 🐦 ▶</div>
+    </div>
+  </div>
+
+  <!-- BAND 4 -->
+  <div class="footer-band footer-legal">
+    Terms & Conditions  |  Shipping Policy | Cancellation Policy | Privacy Policy 
+  </div>  
+    <!-- BAND 6 -->
+  <div class="footer-band footer-copy">
+    © 2026 Nykaa Retail Limited. All Rights Reserved.
+  </div>
+  
+
+  <!-- BAND 5 -->
+  <div class="footer-band footer-popular">
+    <strong>Popular Links:</strong>
+    Lipstick, Hair Serum, Concealer, Face Mask, BB Cream, Perfume,
+    Sunscreen, Cleanser, Foundation, Face Wash, Hair Color, lipstick,
+    highlighter,hair serum,concealer,face mask,biotique,lip gloss,perfume for women,
+    facial kit,bb cream,victoria secret,love beauty and planet shampoo,eyeliner,hair mask,
+    face wash for oily skin,ordinary,toner,eyeshadow palette,cleanser,chemist at play,mascara,
+    loreal professional,hair extensions,olay cream,fogg,lip tint,under eye cream,wax strips,
+    shower gel,sunscreen for face,insight cosmetics,face foundation,hair removal machine,
+    mac foundation,choker,oud perfume,makeup pouch,olaplex,body mist,wella shampoo,huda beauty foundation,
+    night cream,facewash,nyx,schwarzkopf shampoo,blue heaven,peel off mask,best lip balm,face scrub,
+    Cetaphil Face Wash,Mederma Cream,Multivitamins Tablet,Himalaya Face Wash,Garnier Face Wash,
+    Hair Color For Women,Cetaphil Moisturizers,Ponds Face Wash,Streax Hair Serum,Nivea Body Lotions,
+    Vaseline Body Lotions,Sugar Lipstick,Biotin Tablet,Aqualogica Sunscreen,Salicylic Acid Face Wash,
+    Fogg Perfume,Clean And Clear Face Wash,Neutrogena Sunscreen,Pears Soaps,Hair Color For Men,Dry Cleansers,
+    Face Serum
+
+  </div>
+</footer>
+{% include "includes/cart_drawer.html" %}
+
+
+<script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/product_zoom.js' %}"></script>
+<script src="{% static 'js/product_list.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/bag.js' %}"></script>
+
+
+</body>
+</html>
+
+
+<!-- ---------FOOTER --------- -->

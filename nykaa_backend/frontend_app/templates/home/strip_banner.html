@@ -1,0 +1,9 @@
+{% if strip_banner %}
+<section class="home-strip">
+  <div class="strip-inner">
+    <a href="{{ strip_banner.redirect_url }}">
+      <img src="{{ strip_banner.image.url }}" alt="{{ strip_banner.title }}">
+    </a>
+  </div>
+</section>
+{% endif %}

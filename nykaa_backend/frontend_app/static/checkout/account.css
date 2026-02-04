@@ -1,0 +1,137 @@
+:root {
+  --nykaa-pink: #e80071;
+  --text-gray: #757575;
+  --border-light: #e0e0e0;
+  --nykaa-green: #1f8a70;
+}
+
+/* 1. Reset everything to remove top/bottom gaps and scroll */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Exactly screen height */
+  width: 100%;
+  overflow: hidden; /* Removes the scroll bar */
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Main Container fits screen below header */
+.checkout-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto; 
+  padding: 0 20px;
+  margin-top: -50px;
+  gap: 24px;
+  /* Adjust 80px to your actual header height */
+  height: calc(100vh - 80px); 
+  align-items: stretch; /* Forces left and right side to same height */
+}
+
+/* 3. Columns */
+.checkout-main {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.checkout-sidebar {
+  flex: 1;
+  min-width: 320px;
+  margin-top: 90px;
+  padding-top: 60px;
+}
+
+/* 4. The Grid - Aligning Cards Perfectly */
+.account-options-grid {
+  display: flex; /* Flex is better than grid for equal height cards */
+  gap: 15px;
+  width: 100%;
+  align-items: stretch; /* Critical: makes all 3 cards exactly same height */
+}
+
+.account-card {
+  flex: 1;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-bg {
+  height: 120px;
+  background-color: #fce4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(#f48fb1 0.6px, transparent 0.6px);
+  background-size: 10px 10px;
+}
+
+.card-body {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1; /* Pushes content and button apart */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keeps buttons aligned at the bottom */
+}
+
+.card-body h3 { font-size: 16px; margin: 0 0 10px 0; }
+.card-body p { font-size: 16px; color: var(--text-gray); margin: 0 0 20px 0; line-height: 1.4; flex-grow: 1; }
+
+/* 5. Summary Box */
+.summary-box {
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.summary-header, .price-details-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 16px;
+  font-weight: 600;
+}
+
+.savings-banner {
+  background: #f1fbf8;
+  color: var(--nykaa-green);
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 6. Buttons */
+.btn-pink { background: var(--nykaa-pink); color: #fff; border: none; padding: 12px; width: 100%; border-radius: 4px; font-weight: 600; cursor: pointer; }
+.btn-outline-dark { background: #fff; color: #333; border: 1px solid #333; padding: 12px; width: 100%; border-radius: 4px; font-weight: 600; cursor: pointer; }
+.btn-outline-pink { background: #fff; color: var(--nykaa-pink); border: 1px solid var(--nykaa-pink); padding: 12px; width: 100%; border-radius: 4px; font-weight: 600; cursor: pointer; }
+
+/* 7. RESPONSIVE QUERIES */
+@media (max-width: 900px) {
+  body, html { overflow: auto; height: auto; } /* Allow scrolling on mobile */
+  
+  .checkout-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .checkout-sidebar {
+    order: -1; /* Summary box goes to top on mobile */
+    min-width: 100%;
+  }
+  
+  .account-options-grid {
+    flex-direction: column;
+  }
+}

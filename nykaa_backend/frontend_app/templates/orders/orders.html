@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Orders | Nykaa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'orders/orders.css' %}">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="orders-header">
+  <a href="/" class="back-btn">←</a>
+  <img src="{% static 'images/nykaa-logo.png' %}" class="logo" alt="Nykaa">
+</header>
+
+<!-- PAGE -->
+<div class="orders-page">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <a href="/orders/orders/" class="side-link active">
+      🧾 Orders
+    </a>
+    <a href="/orders/wishlist/" class="side-link">
+      ♡ Wishlist
+    </a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="orders-content">
+    <h1 class="page-title">My Orders</h1>
+
+    <div id="ordersContainer"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state hidden">
+      <img src="{% static 'orders/no-orders.png' %}">
+      <h3>No recent orders</h3>
+      <p>You haven’t placed any orders yet</p>
+      <a href="/" class="primary-btn">Start Shopping</a>
+    </div>
+  </main>
+</div>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Rate this product</h3>
+
+    <!-- ERROR MESSAGE -->
+    <p id="reviewError" class="review-error hidden"></p>
+
+    <!-- STARS -->
+    <div class="stars">
+      <span onclick="selectStar(1)">★</span>
+      <span onclick="selectStar(2)">★</span>
+      <span onclick="selectStar(3)">★</span>
+      <span onclick="selectStar(4)">★</span>
+      <span onclick="selectStar(5)">★</span>
+    </div>
+
+    <!-- COMMENT -->
+    <textarea
+      id="reviewComment"
+      placeholder="Write your review (optional)">
+    </textarea>
+
+    <!-- ACTIONS -->
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeReview()">Cancel</button>
+
+      <!-- 🔑 IMPORTANT ID -->
+      <button
+        id="submitReviewBtn"
+        class="submit"
+        onclick="submitReview()">
+        Submit Review
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'orders/orders.js' %}"></script>
+
+</body>
+</html>
