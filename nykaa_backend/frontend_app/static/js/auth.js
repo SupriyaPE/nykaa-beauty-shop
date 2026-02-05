@@ -1,4 +1,10 @@
 /*********************************
+ * GLOBAL STATE
+ *********************************/
+let currentEmail = null;
+let otpInProgress = false;
+
+/*********************************
  * AUTH STATE ON LOAD
  *********************************/
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,33 +38,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-
-
-document.getElementById("login-submit-btn")?.addEventListener("click", async () => {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-
-  const res = await fetch("/api/auth/login/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    alert("Invalid credentials");
-    return;
-  }
-
-  localStorage.setItem("access_token", data.access);
-  localStorage.setItem("refresh_token", data.refresh);
-  localStorage.setItem("user", JSON.stringify(data.user));
-
-  document.getElementById("login-dropdown").classList.add("hidden");
-  updateHeaderUser();
-});
-
 /*********************************
  * UPDATE HEADER AFTER LOGIN
  *********************************/
@@ -70,7 +49,6 @@ function updateHeaderUser() {
   const userWrapper = document.getElementById("user-wrapper");
   const userNameEl = document.getElementById("user-name");
 
-  // Header may not exist on checkout pages
   if (signinBtn) signinBtn.classList.add("hidden");
   if (userWrapper) userWrapper.classList.remove("hidden");
 
@@ -91,109 +69,34 @@ document.addEventListener("click", () => {
   document.getElementById("user-dropdown")?.classList.add("hidden");
 });
 
-
-
 /*********************************
- * LOGOUT (NYKAA-CORRECT)
+ * LOGOUT (NYKAA SAFE)
  *********************************/
 document.getElementById("logout-btn")?.addEventListener("click", async () => {
   try {
     await fetch("/api/auth/logout/", {
       method: "POST",
-      credentials: "include", // 🔥 REQUIRED
+      credentials: "include"
     });
-  } catch (e) {
-    console.error("Logout API failed");
-  }
+  } catch {}
 
-  // 🔥 Clear frontend auth
   localStorage.removeItem("access_token");
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("user");
   localStorage.removeItem("current_order_id");
 
-  // 🔥 Reload = new guest session
   window.location.href = "/";
 });
 
-
 /*********************************
- * ACCOUNT PAGE UI STATE
+ * OTP FLOW (HEADER + ACCOUNT)
  *********************************/
-function hideAll() {
-  document.getElementById("account-choice")?.classList.add("hidden");
-  document.getElementById("login-box")?.classList.add("hidden");
-  document.getElementById("signup-box")?.classList.add("hidden");
-}
-
-function showLogin() {
-  hideAll();
-  document.getElementById("login-box")?.classList.remove("hidden");
-}
-
-function showSignup() {
-  hideAll();
-  document.getElementById("signup-box")?.classList.remove("hidden");
-}
-
-/*********************************
- * LOGIN
- *********************************/
-async function loginUser() {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-
-  const res = await fetch("/api/auth/login/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-
-  const data = await res.json();
-  if (!res.ok) {
-    alert(data?.non_field_errors?.[0] || "Login failed");
-    return;
-  }
-
-  saveAndRedirect(data);
-
-}
-
-/*********************************
- * SIGNUP
- *********************************/
-async function signupUser() {
-  const full_name = document.getElementById("signup-name").value;
-  const email = document.getElementById("signup-email").value;
-  const password = document.getElementById("signup-password").value;
-
-  const res = await fetch("/api/auth/signup/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ full_name, email, password }),
-  });
-
-  const data = await res.json();
-  if (!res.ok) {
-    alert("Signup failed");
-    return;
-  }
-
-  saveAndRedirect(data);
-  
-}
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const sendOtpBtn = document.getElementById("send-otp-btn");
   const verifyOtpBtn = document.getElementById("verify-otp-btn");
+  const completeSignupBtn = document.getElementById("complete-signup-btn");
   const otpSection = document.getElementById("otp-section");
-
-  let currentEmail = null;
-  let otpInProgress = false;
-
-
+  const signupNameInput = document.getElementById("signup-name");
 
   /* ============================
      SEND OTP
@@ -202,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (otpInProgress) return;
     otpInProgress = true;
 
-    const email = document.getElementById("login-email").value.trim();
+    const emailInput = document.getElementById("login-email");
+    const email = emailInput?.value.trim();
 
     if (!email) {
       alert("Enter email");
@@ -216,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const res = await fetch("/api/auth/send-otp/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email })
     });
 
     if (!res.ok) {
@@ -228,69 +132,103 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     currentEmail = email;
-    otpSection.classList.remove("hidden");
+    otpSection?.classList.remove("hidden");
     sendOtpBtn.innerText = "OTP Sent";
+    sendOtpBtn.disabled = false;
+    otpInProgress = false;
   });
 
-
-  
   /* ============================
      VERIFY OTP
   ============================ */
   verifyOtpBtn?.addEventListener("click", async () => {
-  if (verifyOtpBtn.dataset.locked === "true") return;
+    if (verifyOtpBtn.dataset.locked === "true") return;
 
-  const otp = document.getElementById("otp-input").value.trim();
+    const otp = document.getElementById("otp-input")?.value.trim();
 
-  if (!otp || otp.length !== 6) {
-    alert("Enter valid 6-digit OTP");
-    return;
-  }
+    if (!otp || otp.length !== 6) {
+      alert("Enter valid 6-digit OTP");
+      return;
+    }
 
-  if (!currentEmail) {
-    alert("Email missing. Please resend OTP.");
-    return;
-  }
+    if (!currentEmail) {
+      alert("Email missing. Please resend OTP.");
+      return;
+    }
 
-  // 🔒 HARD LOCK
-  verifyOtpBtn.dataset.locked = "true";
-  verifyOtpBtn.disabled = true;
-  verifyOtpBtn.innerText = "Verifying...";
+    verifyOtpBtn.dataset.locked = "true";
+    verifyOtpBtn.disabled = true;
+    verifyOtpBtn.innerText = "Verifying...";
 
-  const res = await fetch("/api/auth/verify-otp/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: currentEmail, otp }),
+    const res = await fetch("/api/auth/verify-otp/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: currentEmail, otp })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Invalid OTP");
+      verifyOtpBtn.disabled = false;
+      verifyOtpBtn.innerText = "Verify OTP";
+      verifyOtpBtn.dataset.locked = "false";
+      return;
+    }
+
+    // ✅ EXISTING USER → LOGIN
+    if (data.is_new_user === false) {
+      localStorage.setItem("access_token", data.access);
+      localStorage.setItem("refresh_token", data.refresh);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      updateHeaderUser();
+
+      const next = new URLSearchParams(window.location.search).get("next");
+      window.location.href = next || "/";
+      return;
+    }
+
+    // 🆕 NEW USER → ASK NAME
+    signupNameInput?.classList.remove("hidden");
+    completeSignupBtn?.classList.remove("hidden");
+    verifyOtpBtn.classList.add("hidden");
   });
 
-  const data = await res.json();
+  /* ============================
+     COMPLETE SIGNUP
+  ============================ */
+  completeSignupBtn?.addEventListener("click", async () => {
+    const fullName = signupNameInput?.value.trim();
 
-  if (!res.ok) {
-    alert(data.error || "Invalid OTP");
-    verifyOtpBtn.disabled = false;
-    verifyOtpBtn.innerText = "Verify OTP";
-    verifyOtpBtn.dataset.locked = "false";
-    return;
-  }
+    if (!fullName) {
+      alert("Please enter your name");
+      return;
+    }
 
- // ✅ SAVE AUTH FIRST (CRITICAL)
-  localStorage.setItem("access_token", data.access);
-  localStorage.setItem("refresh_token", data.refresh);
-  localStorage.setItem("user", JSON.stringify(data.user));
+    const res = await fetch("/api/auth/complete-signup/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: currentEmail,
+        full_name: fullName
+      })
+    });
 
-  // ✅ UPDATE HEADER
-  updateHeaderUser();
+    const data = await res.json();
 
-  // ✅ NYKAA FLOW → THEN REDIRECT
-  window.location.href = "/checkout/address/";
-    
-  // ✅ UPDATE HEADER
-  updateHeaderUser();
+    if (!res.ok) {
+      alert(data.error || "Signup failed");
+      return;
+    }
 
-  // ✅ NYKAA FLOW
+    localStorage.setItem("access_token", data.access);
+    localStorage.setItem("refresh_token", data.refresh);
+    localStorage.setItem("user", JSON.stringify(data.user));
 
-  const next = new URLSearchParams(window.location.search).get("next");
-  window.location.href = next || "/";
- });
+    updateHeaderUser();
 
+    const next = new URLSearchParams(window.location.search).get("next");
+    window.location.href = next || "/";
+  });
 });

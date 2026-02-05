@@ -24,3 +24,13 @@ class SignupSerializer(serializers.ModelSerializer):
             last_name=last_name,
         )
         return user
+
+from accounts.models import User
+
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "full_name", "email", "mobile"]
+        read_only_fields = ["email"]
