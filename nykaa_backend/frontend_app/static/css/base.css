@@ -23,14 +23,14 @@
 .top-bar-right a { display: flex; align-items: center; gap: 7px; text-decoration: none; color: #000; font-size: 15px; }
 .ts-icon svg { width: 24px; height: 24px; }
 
+
+
 /* BAR 2: MAIN HEADER */
 .main-header { background: #fff; height: 70px; border-bottom: 1px solid #eee; }
 .header-content { display: flex; align-items: center; height: 100%; gap: 20px; width: 1150px; margin: 0 auto;}
 .logo img { height: 60px; }
 
-
 /* MEGA MENU STYLING */
-
 /* Parent container */
 .nav-item { 
     padding: 20px 0;
@@ -48,18 +48,13 @@
 /* =============================
    NYKAA STYLE MEGA MENU
 ============================= */
-
 .mega-menu { 
     display: none;
     position: absolute;
     top: 100%;
-
-    /* 👇 Anchor to main-nav center */
     left: 75%;
     transform: translateX(-50%);
-
     width: 1150px;
-
     background: #fff;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
     padding: 30px 35px;
@@ -101,6 +96,119 @@
 .mega-grid a:hover {
     color: #fc2779;
 }
+
+
+/* ===============================
+   BRANDS DROPDOWN (NYKAA STYLE)
+=============================== */
+
+.brands-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 75%;
+    transform: translateX(-50%);
+
+    width: 1150px;
+    height: 420px;
+
+    background: #fff;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    border-top: 1px solid #eee;
+
+    padding: 0;
+    z-index: 1100;
+    top: calc(100%-10px);
+    display: none;
+}
+
+/* Show dropdown */
+.nav-item:hover .brands-dropdown {
+    display: flex;
+}
+
+/* LEFT PANEL */
+.brands-left {
+    width: 260px;
+    background: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Search */
+.brand-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+/* Top brand list */
+.top-brands h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.brand-name {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.brand-name:hover {
+    color: #fc2779;
+}
+/* ===============================
+   RIGHT PANEL – NYKAA STYLE
+=============================== */
+
+.brands-right {
+    flex: 1;
+    padding: 30px 35px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px 24px;
+    background: #f5f3f3; /* same as dropdown */
+}
+
+/* Brand logo link (NO CARD) */
+.brand-logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    height: 60px;
+    cursor: pointer;
+}
+
+/* Logo image */
+.brand-logo-card img {
+    max-width: 120px;
+    object-fit: contain;
+}
+
+/* Hover polish (Nykaa-like) */
+.brand-logo-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Text fallback (if no logo) */
+.brand-logo-card span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    text-align: center;
+}
+
 
 /* ***** SEARCH BAR ******** */
 .search-box { 

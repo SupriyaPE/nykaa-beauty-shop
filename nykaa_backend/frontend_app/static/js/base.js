@@ -16,3 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+function filterBrands(value) {
+
+    value = value.toLowerCase();
+
+    document.querySelectorAll(".brand-name").forEach(el => {
+        el.style.display = el.dataset.name.includes(value)
+            ? "block"
+            : "none";
+    });
+
+    document.querySelectorAll(".brand-logo-card").forEach(el => {
+        el.style.display = el.dataset.name.includes(value)
+            ? "flex"
+            : "none";
+    });
+}

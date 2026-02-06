@@ -80,21 +80,54 @@
         <div class="logo">
             <a href="/"><img src="{% static 'images/nykaa-logo.png' %}" alt="Nykaa"></a>
         </div>
-
-       <nav class="main-nav">
+          <nav class="main-nav">
           <a href="{% url 'home' %}" class="nav-link">Categories</a>
           
 
+
           <div class="nav-item">
-              <a href="#" class="nav-link">Brands</a>
-              <div class="mega-menu">
-                  <div class="mega-grid">
-                      {% for brand in header_brands %}
-                      <a href="{% url 'brand_products' brand.slug %}">{{ brand.name }}</a>
-                      {% endfor %}
-                  </div>
-              </div>    
-          </div>
+             <a href="#" class="nav-link">Brands</a>
+              <div class="mega-menu brands-dropdown">
+                    <!-- LEFT PANEL -->
+                    <div class="brands-left">
+                        <!-- SEARCH -->
+                        <input
+                            type="text"
+                            class="brand-search"
+                            placeholder="Search Brands"
+                            onkeyup="filterBrands(this.value)"
+                        >
+                        <!-- TOP BRANDS -->
+                        <div class="top-brands">
+                            <h4>Top Brands</h4>
+                            {% for brand in header_brands|slice:":10" %}
+                            <a href="{% url 'brand_products' brand.slug %}"
+                            class="brand-name"
+                            data-name="{{ brand.name|lower }}">
+                            {{ brand.name }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- RIGHT PANEL -->
+                    <div class="brands-right">
+
+                        {% for brand in header_brands %}
+                        <a href="{% url 'brand_products' brand.slug %}"
+                        class="brand-logo-card"
+                        data-name="{{ brand.name|lower }}">
+
+                           {% if brand.header_logo %}
+                                <img src="{{ brand.header_logo.url }}">
+                           {% else %}
+                                <span>{{ brand.name }}</span>
+                           {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
 
           <div class="nav-item">
               <a href="#" class="nav-link">Luxe</a>

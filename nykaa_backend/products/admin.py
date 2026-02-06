@@ -26,10 +26,27 @@ class CategoryAdmin(admin.ModelAdmin):
 # =========================
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ("name", "is_active")
+    list_display = ("name", "is_active", "is_luxe")
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ("name",)
 
+    fieldsets = (
+        ("Basic Info", {
+            "fields": ("name", "slug", "is_active", "is_luxe")
+        }),
+
+        ("Homepage Brand Card", {
+            "fields": ("logo",)
+        }),
+
+        ("Header Dropdown", {
+            "fields": ("header_logo",)
+        }),
+
+        ("Brand Promotion Video", {
+            "fields": ("brand_video",)
+        }),
+    )
 
 # =========================
 # BANNER ADMIN

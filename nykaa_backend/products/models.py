@@ -38,14 +38,21 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
 # =========================
 # BRAND
 # =========================
 class Brand(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
+
+    # Homepage brand card image (already used)
     logo = models.ImageField(upload_to="brands/", blank=True, null=True)
+
+    # Header dropdown brand logo
+    header_logo = models.ImageField(upload_to="brand_logos/", blank=True, null=True)
+
+    # Single promotional video per brand
+    brand_video = models.FileField(upload_to="brand_videos/", blank=True, null=True)
 
     is_luxe = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
