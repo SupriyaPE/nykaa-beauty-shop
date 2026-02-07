@@ -14,26 +14,36 @@ function togglePreview(productId) {
     panel.classList.toggle('active');
 }
 
+
+
 function selectVariant(element, productId) {
     const card = document.getElementById('card-' + productId);
     if (!card) return;
 
-    // Remove selection from all chips
+    // remove selection
     card.querySelectorAll('.chip').forEach(chip => {
         chip.classList.remove('selected');
     });
 
-    // Mark selected
     element.classList.add('selected');
 
-    // Update hidden variant input
     const variantId = element.getAttribute('data-id');
+
+    // hidden input
     const hiddenInput = card.querySelector('.hid-variant-id');
-    if (hiddenInput) {
-        hiddenInput.value = variantId;
+    if (hiddenInput) hiddenInput.value = variantId;
+
+    // 🔥 update ANY bag button inside card
+    const btn =
+        card.querySelector('.add-to-bag-btn') ||
+        card.querySelector('.btn-pink') ||
+        card.querySelector('.add-btn');
+
+    if (btn) {
+        btn.dataset.variant = variantId;
     }
 
-    // Update price dynamically
+    // update price
     const price = element.getAttribute('data-price');
     const priceEl = card.querySelector('.sp');
     if (priceEl) {
@@ -45,14 +55,20 @@ function selectVariant(element, productId) {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.pl-card').forEach(card => {
         const firstChip = card.querySelector('.chip');
-        const input = card.querySelector('.hid-variant-id');
+        if (!firstChip) return;
 
-        if (firstChip && input && !input.value) {
-            input.value = firstChip.getAttribute('data-id');
+        const variantId = firstChip.getAttribute('data-id');
+
+        const btn =
+            card.querySelector('.add-to-bag-btn') ||
+            card.querySelector('.btn-pink') ||
+            card.querySelector('.add-btn');
+
+        if (btn) {
+            btn.dataset.variant = variantId;
         }
     });
 });
-
 
 
 function addToBag(btn) {
