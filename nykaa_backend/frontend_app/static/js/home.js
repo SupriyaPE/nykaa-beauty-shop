@@ -18,12 +18,10 @@ if (track && items.length > 3) {
   }, 3500);
 }
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   document
     .querySelectorAll(".rating-row[data-product-id]")
-    .forEach(async row => {
+    .forEach(async (row) => {
       const productId = row.dataset.productId;
 
       try {
@@ -33,11 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const rating = parseFloat(data.average_rating || 0);
         const count = data.total_reviews || 0;
 
-        row.querySelector(".stars").innerHTML = renderStars(rating);
-        row.querySelector(".rating-count").innerText = `(${count})`;
+        // ✅ SAFE ACCESS (🔥 FIX)
+        const starsEl = row.querySelector(".stars");
+        const countEl = row.querySelector(".rating-count");
+
+        if (starsEl) starsEl.innerHTML = renderStars(rating);
+        if (countEl) countEl.innerText = `(${count})`;
+
       } catch {
-        row.querySelector(".stars").innerHTML = renderStars(0);
-        row.querySelector(".rating-count").innerText = "(0)";
+        const starsEl = row.querySelector(".stars");
+        const countEl = row.querySelector(".rating-count");
+
+        if (starsEl) starsEl.innerHTML = renderStars(0);
+        if (countEl) countEl.innerText = "(0)";
       }
     });
 });

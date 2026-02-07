@@ -135,30 +135,64 @@ async function markWishlistHearts() {
     });
 }
 
-async function toggleWishlist(btn) {
+
+
+/* ================================
+   LOGIN POPUP
+================================ */
+function showLoginPopup() {
+    const signinBtn = document.getElementById("signin-btn");
+    if (signinBtn) {
+        signinBtn.click();   // 🔥 use existing header logic
+    }
+}
+
+async function toggleWishlist(btn, event) {
+
+    // ⭐ STOP other global listeners (VERY IMPORTANT)
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
     const variantId = btn.dataset.variant;
     const token = localStorage.getItem("access_token");
 
-    const headers = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
+    // Guest → open login dropdown
+    if (!token) {
+        const popup =
+            document.getElementById("login-dropdown") ||
+            document.getElementById("loginModal") ||
+            document.querySelector(".login-popup");
+
+        if (popup) popup.classList.remove("hidden");
+        return;
+    }
 
     const res = await fetch("/api/wishlist/toggle/", {
         method: "POST",
-        headers,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({ variant_id: variantId })
     });
 
     if (res.status === 401) {
-        alert("Please login to use wishlist");
+        const popup =
+            document.getElementById("login-dropdown") ||
+            document.getElementById("loginModal") ||
+            document.querySelector(".login-popup");
+
+        if (popup) popup.classList.remove("hidden");
         return;
     }
 
     const data = await res.json();
 
     btn.classList.toggle("active", data.added);
-    btn.innerText = data.added ? "♥" : "♡";   // 🔥 THIS LINE
+    btn.innerText = data.added ? "♥" : "♡";
 }
-
 
 
 

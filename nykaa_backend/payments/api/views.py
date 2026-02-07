@@ -80,6 +80,19 @@ def verify_razorpay_payment(request):
     order.razorpay_payment_id = data["razorpay_payment_id"]
     order.save()
 
+
+    # ---------------------------------------
+    # REDUCE STOCK AFTER PAYMENT SUCCESS
+    # ---------------------------------------
+    for item in order.items.all():
+        variant = item.product_variant
+
+        # safety check
+        if variant.stock is not None:
+            variant.stock = max(0, variant.stock - item.quantity)
+            variant.save()
+
+
     # ✅ Clear cart AFTER payment
     if order.user:
         Cart.objects.filter(user=order.user).delete()

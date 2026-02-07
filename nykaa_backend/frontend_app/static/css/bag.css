@@ -256,6 +256,30 @@ body.bag-open {
 }
 
 
+/* ===============================
+   BAG TOAST MESSAGE
+=============================== */
+.bag-toast {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #111;
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 13px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.bag-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
 @media (max-width: 600px) {
   .qty-sheet-content {
     max-width: 100%;

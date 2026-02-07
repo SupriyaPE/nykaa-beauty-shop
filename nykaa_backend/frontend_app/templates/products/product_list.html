@@ -108,7 +108,7 @@
                             <div class="wishlist-btn"
                                     data-variant="{{ variant.id }}"
                                     data-product="{{ product.id }}"
-                                    onclick="toggleWishlist(this)">
+                                    onclick="toggleWishlist(this,event)">
                                     ♡
                             </div>
 
@@ -138,5 +138,5 @@
     </section>
 </div>
 
-<script src="{% static 'js/product_list.js' %}"></script>
+<script src="{% static 'js/product_list.js' %}?v=2"></script>
 {% endblock %}

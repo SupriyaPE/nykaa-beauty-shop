@@ -1,16 +1,43 @@
 document.addEventListener("DOMContentLoaded", loadWishlist);
 
 // ==============================
+// LOGIN POPUP
+// ==============================
+function showLoginPopup() {
+    // change id if your popup id different
+    const popup =
+        document.getElementById("login-dropdown") ||
+        document.getElementById("loginModal") ||
+        document.querySelector(".login-popup");
+
+    if (popup) {
+        popup.classList.remove("hidden");
+    }
+}
+
+// ==============================
 // LOAD WISHLIST
 // ==============================
 async function loadWishlist() {
     const token = localStorage.getItem("access_token");
+
+    // ✅ guest
+    if (!token) {
+        showLoginPopup();
+        return;
+    }
 
     const res = await fetch("/api/wishlist/", {
         headers: {
             "Authorization": `Bearer ${token}`
         }
     });
+
+    // ✅ unauthorized
+    if (res.status === 401) {
+        showLoginPopup();
+        return;
+    }
 
     const data = await res.json();
 
@@ -61,7 +88,7 @@ async function loadWishlist() {
 }
 
 // ==============================
-// MOVE TO BAG (NYKAA STYLE)
+// MOVE TO BAG
 // ==============================
 async function moveToBag(variantId, btn) {
     if (btn.disabled) return;
@@ -71,22 +98,25 @@ async function moveToBag(variantId, btn) {
 
     const res = await fetch("/api/cart/add/", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ variant_id: variantId })
     });
 
     if (!res.ok) {
         btn.innerText = "MOVE TO BAG";
         btn.disabled = false;
-        alert("Unable to add to bag");
         return;
     }
 
-    // remove from wishlist backend
     const token = localStorage.getItem("access_token");
-    await fetch("/api/wishlist/toggle/", {
+
+    // ✅ guest
+    if (!token) {
+        showLoginPopup();
+        return;
+    }
+
+    const wishRes = await fetch("/api/wishlist/toggle/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -95,7 +125,11 @@ async function moveToBag(variantId, btn) {
         body: JSON.stringify({ variant_id: variantId })
     });
 
-    // remove card from UI
+    if (wishRes.status === 401) {
+        showLoginPopup();
+        return;
+    }
+
     const card = btn.closest(".wishlist-card");
     card.style.opacity = "0";
     card.style.transform = "scale(0.95)";
@@ -113,7 +147,13 @@ async function moveToBag(variantId, btn) {
 async function removeWishlist(variantId) {
     const token = localStorage.getItem("access_token");
 
-    await fetch("/api/wishlist/toggle/", {
+    // ✅ guest
+    if (!token) {
+        showLoginPopup();
+        return;
+    }
+
+    const res = await fetch("/api/wishlist/toggle/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -121,6 +161,11 @@ async function removeWishlist(variantId) {
         },
         body: JSON.stringify({ variant_id: variantId })
     });
+
+    if (res.status === 401) {
+        showLoginPopup();
+        return;
+    }
 
     loadWishlist();
 }

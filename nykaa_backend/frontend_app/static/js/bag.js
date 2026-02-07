@@ -172,10 +172,35 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ===============================
-   CHECKOUT ROUTING (UNCHANGED)
+  BAG MESSAGE
+=============================== */
+
+function showBagMessage(text) {
+  const old = document.querySelector(".bag-toast");
+  if (old) old.remove();
+
+  const toast = document.createElement("div");
+  toast.className = "bag-toast";
+  toast.innerText = text;
+
+  const drawer = document.getElementById("bag-drawer");
+  drawer.appendChild(toast);
+
+  setTimeout(() => toast.classList.add("show"), 10);
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}
+
+/* ===============================
+   CHECKOUT ROUTING (SAFE)
 =============================== */
 function proceedToCheckout() {
-  fetch("/api/checkout/account-status/", {
+
+  // 🔥 STEP 1 → CHECK CART FIRST
+  fetch("/api/cart/", {
     credentials: "include",
     headers: {
       Authorization: localStorage.getItem("access_token")
@@ -184,7 +209,30 @@ function proceedToCheckout() {
     }
   })
     .then(res => res.json())
+    .then(cart => {
+
+      // 🚨 EMPTY → STOP HERE
+      if (!cart.items || cart.items.length === 0) {
+        showBagMessage("Your bag is empty. Add items to continue.");
+        return;
+      }
+
+      // 🔥 STEP 2 → EXISTING FLOW (UNCHANGED)
+      return fetch("/api/checkout/account-status/", {
+        credentials: "include",
+        headers: {
+          Authorization: localStorage.getItem("access_token")
+            ? `Bearer ${localStorage.getItem("access_token")}`
+            : ""
+        }
+      });
+    })
+    .then(res => {
+      if (!res) return;
+      return res.json();
+    })
     .then(data => {
+      if (!data) return;
 
       if (data.status === "LOGGED_IN") {
         window.location.href = "/checkout/address/";
@@ -195,8 +243,6 @@ function proceedToCheckout() {
         window.location.href = "/checkout/account/";
         return;
       }
-
-      alert("Your cart is empty");
     })
     .catch(() => {
       alert("Checkout failed. Try again.");

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
   <link rel="stylesheet" href="{% static 'orders/orders.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
 </head>
 <body>
 
@@ -36,7 +37,7 @@
 
     <!-- EMPTY STATE -->
     <div id="emptyState" class="empty-state hidden">
-      <img src="{% static 'orders/no-orders.png' %}">
+      <!-- <img src="{% static 'orders/no-orders.png' %}"> -->
       <h3>No recent orders</h3>
       <p>You haven’t placed any orders yet</p>
       <a href="/" class="primary-btn">Start Shopping</a>
