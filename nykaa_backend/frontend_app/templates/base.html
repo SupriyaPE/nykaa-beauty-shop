@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
   <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
   <link rel="stylesheet" href="{% static 'css/bag.css' %}">
+  <link rel="stylesheet" href="{% static 'css/brands_footer.css' %}">
 
   {% block page_css %}{% endblock %}
   {% block extra_js %}{% endblock %}
@@ -129,18 +130,59 @@
             </div>
 
 
-          <div class="nav-item">
-              <a href="#" class="nav-link">Luxe</a>
-              <div class="mega-menu">
-                  <div class="mega-grid">
-                      {% for brand in luxe_brands %}
-                      <a href="{% url 'brand_products' brand.slug %}">{{ brand.name }}</a>
-                      {% endfor %}
-                  </div>
-              </div>
-           </div>
+         <div class="nav-item">
+            <a href="#" class="nav-link">Luxe</a>
 
-           <a href="#" class="nav-link">Nykaa Fashion</a>
+            <div class="mega-menu">
+                <div class="mega-grid">
+
+                    {% for parent in luxe_categories %}
+                    <div class="mega-col">
+                        <h4>{{ parent.name }}</h4>
+
+                        {% for child in parent.children.all %}
+                            {% if child.is_active %}
+                                <a href="{% url 'category_products' child.slug %}">
+                                    {{ child.name }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endfor %}    
+
+                </div>
+            </div>
+        </div>
+
+           <div class="nav-item">
+                <a href="#" class="nav-link">Nykaa Fashion</a>
+
+                <div class="mega-menu fashion-dropdown">
+                    <div class="fashion-grid">
+
+                        {# STEP 1: ONLY HEADER SUB-CATEGORIES (explicitly marked) #}
+                        {% for subcat in fashion_categories %}
+                            {% if subcat.show_in_fashion_header %}
+                                <div class="fashion-col">
+                                    <h4>{{ subcat.name }}</h4>
+
+                                    {# STEP 2: ONLY ITS CHILD CATEGORIES #}
+                                    {% for child in fashion_categories %}
+                                        {% if child.parent_id == subcat.id %}
+                                            <a href="{% url 'category_products' child.slug %}">
+                                                {{ child.name }}
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+           
            <a href="#" class="nav-link">Beauty Advice</a>
       </nav>
 

@@ -18,11 +18,15 @@ class Category(models.Model):
         related_name="children"
     )
 
-
     # HEADER CONTROL (NYKAA STYLE)
     show_in_header = models.BooleanField(default=True)
     header_order = models.PositiveIntegerField(default=0)
+
+    # Luxe section
     is_luxe = models.BooleanField(default=False)
+
+    # ✅ Nykaa Fashion manual control
+    show_in_fashion_header = models.BooleanField(default=False)
 
     is_active = models.BooleanField(default=True)
 
@@ -45,11 +49,18 @@ class Brand(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
 
-    # Homepage brand card image (already used)
+    # Homepage brand card image (middle of page)
     logo = models.ImageField(upload_to="brands/", blank=True, null=True)
 
     # Header dropdown brand logo
     header_logo = models.ImageField(upload_to="brand_logos/", blank=True, null=True)
+
+    # ✅ Footer brand card image (NEW)
+    footer_logo = models.ImageField(
+        upload_to="footer_brands/",
+        blank=True,
+        null=True
+    )
 
     # Single promotional video per brand
     brand_video = models.FileField(upload_to="brand_videos/", blank=True, null=True)

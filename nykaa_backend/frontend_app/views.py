@@ -28,6 +28,10 @@ def home(request):
     ).order_by("position").first()
 
     brands = Brand.objects.filter(is_active=True)
+    footer_brands = Brand.objects.filter(
+        is_active=True
+    ).order_by("name")[:30]   # you can change count later
+
     categories = Category.objects.filter(is_active=True)
 
     # 🔥 Attach redirect_url dynamically (NO DB CHANGE)
@@ -70,6 +74,7 @@ def home(request):
         "offer_banner": offer_banner,
         "strip_banner": strip_banner,
         "brands": brands[:12],
+        "footer_brands":footer_brands,
         "top_categories": top_categories,
         "featured_products": featured_products,
     })

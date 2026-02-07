@@ -1,0 +1,31 @@
+{% load static %}
+<section class="brand-video-section">
+
+  {% if brand and brand.brand_video %}
+    <a href="/products/?brand={{ brand.slug }}" class="brand-video-link">
+      <video
+        class="brand-video"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="{{ brand.brand_video.url }}" type="video/mp4">
+      </video>
+
+      <div class="brand-video-overlay">
+        <h2 class="brand-video-title">
+          {{ brand.name }} Collection
+        </h2>
+        <span class="brand-video-cta">Shop Now</span>
+      </div>
+    </a>
+
+  {% else %}
+    <!-- Placeholder when no video is uploaded -->
+    <div class="brand-video-placeholder">
+      <span>Brand Video Placeholder</span>
+    </div>
+  {% endif %}
+
+</section>

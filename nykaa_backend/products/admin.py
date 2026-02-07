@@ -46,6 +46,10 @@ class BrandAdmin(admin.ModelAdmin):
         ("Brand Promotion Video", {
             "fields": ("brand_video",)
         }),
+        
+        ("Footer Brand Card", {
+            "fields": ("footer_logo",)
+        }),
     )
 
 # =========================

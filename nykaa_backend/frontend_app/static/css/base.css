@@ -1,6 +1,6 @@
 /* RESET & CORE */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-.container { max-width: 1240px; margin: 0 auto; width: 100%; }
+.container { max-width: 1640px; margin: 0 auto; width: 100%; }
 
 /* BAR 1: TOP PINK BAR */
 .top-bar { background: #fb7cad; height: 40px; color: #000; }
@@ -11,7 +11,7 @@
     width: 100%;
     animation: nykaaShowHide 5s infinite ease-in-out;
 }
-.left-message a { text-decoration: none; color: #000; font-size: 16px; font-weight: 510; margin-left: 50px;}
+.left-message a { text-decoration: none; color: #000; font-size: 16px; font-weight: 510; margin-left: 25%;}
 
 @keyframes nykaaShowHide {
     0% { transform: translateY(40px); opacity: 0; }
@@ -19,7 +19,7 @@
     100% { transform: translateY(-40px); opacity: 0; }
 }
 
-.top-bar-right { display: flex; gap: 22px; align-items: center; margin-right: 50px;}
+.top-bar-right { display: flex; gap: 22px; align-items: center; margin-right: 13%;}
 .top-bar-right a { display: flex; align-items: center; gap: 7px; text-decoration: none; color: #000; font-size: 15px; }
 .ts-icon svg { width: 24px; height: 24px; }
 
@@ -172,7 +172,7 @@
     padding: 30px 35px;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 28px 24px;
     background: #f5f3f3; /* same as dropdown */
 }
@@ -191,7 +191,7 @@
 
 /* Logo image */
 .brand-logo-card img {
-    max-width: 120px;
+    max-width: 100px;
     object-fit: contain;
 }
 
@@ -208,6 +208,50 @@
     color: #444;
     text-align: center;
 }
+
+
+.fashion-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* left: 50%; */
+    transform: translateX(-50%);
+    width: 1100px;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    z-index: 1100;
+}
+
+.nav-item:hover .fashion-dropdown {
+    display: block;
+}
+
+.fashion-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+}
+
+.fashion-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.fashion-col a {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.fashion-col a:hover {
+    color: #fc2779;
+}
+
 
 
 /* ***** SEARCH BAR ******** */
@@ -259,18 +303,23 @@
   background-color: #fc2779;
   color: #fff;
   border: none;
-  padding: 6px 14px;
+  padding: 5px 10px;
+  display: flex;
   border-radius: 4px;
+  width: 90px;
+  height: 30px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 /* LOGIN DROPDOWN */
 .login-dropdown {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 1;
   margin-top: 8px;
   width: 260px;
   background: #fff;
@@ -358,6 +407,17 @@
 
 .user-dropdown a:hover {
   background: #f7f7f7;
+}
+
+#complete-signup-btn {
+  width: 100%;
+  background-color: #fc2779;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .hidden {

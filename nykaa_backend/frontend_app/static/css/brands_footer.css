@@ -1,0 +1,68 @@
+/* ===============================
+   FOOTER BRAND PROMO CARDS
+   (IMAGE ONLY – NO BACKGROUND)
+=============================== */
+
+.footer-brand-section {
+  padding: 0px 0 50px;
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.footer-brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #000;
+  text-align: center;
+}
+
+/* Grid like Nykaa */
+.footer-brand-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+/* Card = image itself */
+.footer-brand-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Tall promo images */
+.footer-brand-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hover effect (premium feel) */
+.footer-brand-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+
+@media (max-width: 1024px) {
+  .footer-brand-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-brand-grid {
+    grid-template-columns: 1fr;
+  }
+}

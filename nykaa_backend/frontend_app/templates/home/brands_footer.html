@@ -1,0 +1,22 @@
+{% load static %}
+<section class="footer-brand-section">
+  <div class="container">
+
+    <h3 class="footer-brand-title">Explore Top Brands</h3>
+
+    <div class="footer-brand-grid">
+      {% for brand in footer_brands %}
+        {% if brand.footer_logo %}
+          <a href="{% url 'brand_products' brand.slug %}"
+             class="footer-brand-card">
+
+            <img src="{{ brand.footer_logo.url }}"
+                 alt="{{ brand.name }}">
+
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
