@@ -209,18 +209,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 def profile_page(request):
-    if not request.user.is_authenticated:
-        return redirect("/")
     return render(request, "orders/profile.html")
 
 def orders_page(request):
-    if not request.user.is_authenticated:
-        return redirect("/")
     return render(request, "orders/orders.html")
 
 def wishlist_page(request):
-    if not request.user.is_authenticated:
-        return redirect("/")
     return render(request, "orders/wishlist.html")      
 
 

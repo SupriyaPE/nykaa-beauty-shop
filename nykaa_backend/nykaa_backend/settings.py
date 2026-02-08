@@ -7,7 +7,10 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from dotenv import load_dotenv
-load_dotenv()
+
+# Load .env only if variables are not already provided
+if not os.getenv("SECRET_KEY"):
+    load_dotenv()
 
 
 # =========================================================
@@ -60,6 +63,7 @@ INSTALLED_APPS = [
 # =========================================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
