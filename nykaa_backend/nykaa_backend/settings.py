@@ -199,3 +199,10 @@ SIMPLE_JWT = {
 # =========================================================
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
+
+
+
+
+# Allow Django to serve media in container (temporary until nginx)
+if not DEBUG:
+    from django.conf.urls.static import static
