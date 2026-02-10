@@ -7,7 +7,7 @@ services:
       - ./nykaa_backend:/app
       - ./nykaa_backend/media:/app/media
     ports:
-      - "8000:8000"
+      - "8004:8000"
     env_file:
       - .env.dev
     depends_on:
