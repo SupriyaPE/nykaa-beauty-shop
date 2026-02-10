@@ -10,8 +10,9 @@ WORKDIR /app
 
 # Install system dependencies for mysqlclient
 RUN apt-get update \
-    && apt-get install -y build-essential default-libmysqlclient-dev pkg-config \
+    && apt-get install -y build-essential default-libmysqlclient-dev pkg-config netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
+
 
 # Install python dependencies
 COPY nykaa_backend/requirements.txt /app/
@@ -27,8 +28,5 @@ EXPOSE 8000
 # Run server
 CMD ["gunicorn", "nykaa_backend.wsgi:application", "--bind", "0.0.0.0:8000"]
 
-# add entrypoint
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+
