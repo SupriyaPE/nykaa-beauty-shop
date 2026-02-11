@@ -1,33 +1,3 @@
-# # services:
-# #   web:
-# #     build: .
-# #     container_name: nykaa_app
-# #     command: gunicorn nykaa_backend.wsgi:application --bind 0.0.0.0:8000 --timeout 120
-# #     volumes:
-# #       - ./nykaa_backend:/app
-# #       - ./nykaa_backend/media:/app/media
-# #     ports:
-# #       - "8000:8000"
-# #     env_file:
-# #       - .env.dev
-# #     depends_on:
-# #       - db
-
-# #   db:
-# #   image: mysql:8.0
-# #   container_name: mysql_db
-# #   restart: always
-# #   environment:
-# #     MYSQL_DATABASE: nykaa_shop
-# #     MYSQL_ROOT_PASSWORD: 9019860150
-# #   ports:
-# #     - "3306:3306"   # 👈 ADD THIS LINE
-# #   volumes:
-# #       - mysql_data:/var/lib/mysql
-
-# # volumes:
-# #   mysql_data:
-
 
 services:
   web:
@@ -37,26 +7,9 @@ services:
     volumes:
       - ./nykaa_backend:/app
       - ./nykaa_backend/media:/app/media
+      - ./db.sqlite3:/app/db.sqlite3
     ports:
       - "8000:8000"
     env_file:
-      - .env.dev
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8.0
-    container_name: mysql_db
-    restart: always
-    environment:
-      MYSQL_DATABASE: nykaa_shop
-      MYSQL_ROOT_PASSWORD: 9019860150
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-volumes:
-  mysql_data:
-
+      - .env
 

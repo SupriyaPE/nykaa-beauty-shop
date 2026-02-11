@@ -9,8 +9,8 @@ from datetime import timedelta
 from dotenv import load_dotenv
 
 # Load .env only if variables are not already provided
-if not os.getenv("SECRET_KEY"):
-    load_dotenv()
+# if not os.getenv("SECRET_KEY"):
+load_dotenv()
 
 
 # =========================================================
@@ -102,22 +102,52 @@ WSGI_APPLICATION = 'nykaa_backend.wsgi.application'
 # =========================================================
 # DATABASE (SAFE)
 # =========================================================
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME", "nykaa_shop"),
-        "USER": os.getenv("DB_USER", "root"),
-        "PASSWORD": os.getenv("DB_PASSWORD", ""),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "3306"),
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": os.getenv("DB_NAME", "nykaa_shop"),
+#         "USER": os.getenv("DB_USER", "root"),
+#         "PASSWORD": os.getenv("DB_PASSWORD", "9019860150"),
+#         "HOST": os.getenv("DB_HOST", "localhost"),
+#         "PORT": os.getenv("DB_PORT", "3306"),
+#         "OPTIONS": {
+#             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 AUTH_USER_MODEL = "accounts.User"
 
+
+
+
+# =========================================================
+# DATABASE
+# =========================================================
+
+DB_ENGINE = os.getenv("DB_ENGINE", "mysql")
+
+if DB_ENGINE == "sqlite":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR.parent / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("DB_NAME", "nykaa_shop"),
+            "USER": os.getenv("DB_USER", "root"),
+            "PASSWORD": os.getenv("DB_PASSWORD", ""),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": os.getenv("DB_PORT", "3306"),
+            "OPTIONS": {
+                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
+        }
+    }
 
 # =========================================================
 # PASSWORD VALIDATION
@@ -207,15 +237,4 @@ RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
 if not DEBUG:
     from django.conf.urls.static import static
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME", "nykaa_shop"),
-        "USER": os.getenv("DB_USER", "root"),
-        "PASSWORD": os.getenv("DB_PASSWORD", "9019860150"),
-        "HOST": os.getenv("DB_HOST", "127.0.0.1"),
-        "PORT": os.getenv("DB_PORT", "3306"),
-    }
-}
 
