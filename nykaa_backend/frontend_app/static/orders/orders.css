@@ -243,3 +243,105 @@ body {
   font-weight: 600;
   font-size: 13px;
 }
+
+
+
+
+
+/* =====================================================
+   ORDERS PAGE – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ================= HEADER ================= */
+  .orders-header {
+    padding: 12px;
+  }
+
+  .logo {
+    height: 28px;
+  }
+
+  /* ================= LAYOUT ================= */
+  .orders-page {
+    flex-direction: column;
+    margin: 10px auto;
+    padding: 0 12px;
+  }
+
+  /* hide sidebar */
+  .sidebar {
+    display: none;
+  }
+
+  /* ================= CONTENT ================= */
+  .orders-content {
+    padding: 0;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  /* ================= ORDER CARD ================= */
+  .order-card {
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .order-meta {
+    font-size: 13px;
+  }
+
+  .order-date {
+    font-size: 12px;
+  }
+
+  /* ================= ITEMS ================= */
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .review-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* ================= EMPTY ================= */
+  .empty-state {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .empty-state img {
+    width: 110px;
+  }
+
+  .primary-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ================= MODAL ================= */
+  .modal-box {
+    width: 92vw;
+    max-width: 400px;
+    padding: 16px;
+  }
+
+  .stars span {
+    font-size: 24px;
+  }
+
+  .modal-actions button {
+    padding: 10px 14px;
+  }
+
+}

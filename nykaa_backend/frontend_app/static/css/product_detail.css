@@ -569,3 +569,141 @@
 
 
 
+
+
+
+
+/* =====================================================
+   PRODUCT DETAIL – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .pd-container {
+    margin: 10px auto;
+    padding: 0 12px;
+  }
+
+  /* breadcrumb */
+  .pd-breadcrumb {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* STACK LAYOUT */
+  .pd-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ================= GALLERY ================= */
+
+  .pd-gallery {
+    position: relative;     /* remove sticky */
+    top: auto;
+    flex-direction: column;
+  }
+
+  /* thumbnails horizontal */
+  .pd-thumbs {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .thumb {
+    width: 55px;
+    height: 55px;
+  }
+
+  /* main image full width */
+  .pd-main {
+    order: 1;
+    width: 100%;
+    height: 340px;
+    margin-left: 0;
+    cursor: default;
+  }
+
+  /* remove desktop zoom */
+  #zoom-lens,
+  #zoom-result,
+  .zoom-plus {
+    display: none !important;
+  }
+
+  /* ================= RIGHT SIDE ================= */
+
+  .pd-right {
+    width: 100%;
+  }
+
+  .product-title {
+    font-size: 18px;
+  }
+
+  .selling-price {
+    font-size: 22px;
+  }
+
+  .mrp,
+  .discount {
+    font-size: 13px;
+  }
+
+  .tax-note {
+    font-size: 12px;
+  }
+
+  /* ================= VARIANTS ================= */
+
+  .variant-grid {
+    gap: 8px;
+  }
+
+  .variant-box {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  /* ================= ADD TO BAG ================= */
+
+  .add-to-bag-btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* ================= DELIVERY ================= */
+
+  .delivery-check {
+    padding: 12px;
+  }
+
+  .pincode-box input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .pincode-box button {
+    font-size: 13px;
+  }
+
+  /* ================= TABS ================= */
+
+  .pd-description-area {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  .tabs-header {
+    gap: 18px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    font-size: 13px;
+  }
+
+}

@@ -135,3 +135,63 @@ body, html {
     flex-direction: column;
   }
 }
+
+
+
+
+
+/* =====================================================
+   CHECKOUT ACCOUNT – MOBILE FIX
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* allow page to behave like mobile */
+  html, body {
+    height: auto !important;
+    overflow: auto !important;
+  }
+
+  /* main wrapper */
+  .checkout-container {
+    flex-direction: column !important;
+    height: auto !important;
+    margin-top: 0 !important;
+    padding: 12px !important;
+  }
+
+  /* ===== BAG SUMMARY ON TOP ===== */
+  .checkout-sidebar {
+    order: -1;
+    min-width: 100%;
+    margin: 0 0 16px 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ===== CARDS STACK ===== */
+  .account-options-grid {
+    flex-direction: column !important;
+  }
+
+  .account-card {
+    width: 100%;
+  }
+
+  /* adjust visuals */
+  .card-header-bg {
+    height: 90px;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-body h3 {
+    font-size: 15px;
+  }
+
+  .card-body p {
+    font-size: 13px;
+  }
+
+}

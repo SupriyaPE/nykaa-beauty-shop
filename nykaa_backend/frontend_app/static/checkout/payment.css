@@ -154,3 +154,74 @@
   color: var(--text-light);
   text-align: center;
 }
+
+
+
+
+
+/* =====================================================
+   PAYMENT PAGE – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* kill 3 column grid */
+  .payment-page {
+    display: flex !important;
+    flex-direction: column !important;
+    border: none;
+  }
+
+  /* ===== LEFT METHODS ===== */
+  .payment-sidebar {
+    width: 100% !important;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+
+  .method-item {
+    padding: 14px 16px;
+  }
+
+  /* ===== CENTER CONTENT ===== */
+  .payment-content {
+    width: 100% !important;
+    padding: 18px 16px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+
+  .upi-selection-box {
+    padding: 16px;
+  }
+
+  .qr-section {
+    gap: 12px;
+  }
+
+  .qr-code-placeholder img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .pink-action-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  /* ===== BAG SUMMARY ===== */
+  .payment-summary {
+    width: 100% !important;
+    margin-top: 12px;
+    padding: 16px;
+  }
+
+}

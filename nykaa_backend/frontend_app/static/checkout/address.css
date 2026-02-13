@@ -288,20 +288,86 @@
 }
 
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+/* =====================================================
+   ADDRESS PAGE – MOBILE RESPONSIVE FIX
+===================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+
+  /* ===== BREAK DESKTOP GRID ===== */
   .checkout-layout {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 12px !important;
+    margin: 0 auto !important;
   }
 
-  #address-list {
-    grid-template-columns: 1fr;
+  /* remove card feel on mobile */
+  .checkout-left {
+    padding: 16px !important;
   }
 
+  /* =============================
+     ORDER OF SECTIONS
+  ============================= */
+
+  /* form first */
+  #address-form-section {
+    order: 1;
+    max-width: 100% !important;
+  }
+
+  /* saved addresses second */
+  #saved-addresses {
+    order: 2;
+  }
+
+  /* bag summary last */
   .checkout-right {
-    position: static;
+    order: 3;
+    width: 100% !important;
+    position: static !important;
   }
+
+  /* =============================
+     ADDRESS LIST
+  ============================= */
+
+  /* 2 → 1 column */
+  #address-list {
+    grid-template-columns: 1fr !important;
+    margin-top: 12px;
+  }
+
+  /* =============================
+     FORM
+  ============================= */
+
+  #address-form-section input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #address-form-section button {
+    font-size: 16px;
+  }
+
+  /* =============================
+     BAG SUMMARY
+  ============================= */
+
+  .price-box,
+  .trust-box {
+    width: 100%;
+  }
+
+  /* =============================
+     DRAWER
+  ============================= */
+
+  .address-drawer {
+    width: 100% !important;
+  }
+
 }

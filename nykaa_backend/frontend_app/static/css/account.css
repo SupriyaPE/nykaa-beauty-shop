@@ -79,3 +79,51 @@
   color: #fc2779;
   text-decoration: none;
 }
+
+
+
+
+/* =====================================================
+   AUTH PAGE – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* remove split layout */
+  .auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: 50vh;
+    padding: 20px;
+  }
+
+  /* ❌ remove pink panel */
+  .auth-left {
+    display: none !important;
+  }
+
+  /* make right full width */
+  .auth-right {
+    width: 100% !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* form width */
+  .auth-box {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  /* slightly tighter */
+  .auth-box h2 {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+}

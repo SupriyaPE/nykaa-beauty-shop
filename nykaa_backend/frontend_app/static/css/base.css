@@ -19,7 +19,7 @@
     100% { transform: translateY(-40px); opacity: 0; }
 }
 
-.top-bar-right { display: flex; gap: 22px; align-items: center; margin-right: 13%;}
+.top-bar-right {  width: 41%;display: flex; gap: 22px; align-items: center;}
 .top-bar-right a { display: flex; align-items: center; gap: 7px; text-decoration: none; color: #000; font-size: 15px; }
 .ts-icon svg { width: 24px; height: 24px; }
 
@@ -27,7 +27,7 @@
 
 /* BAR 2: MAIN HEADER */
 .main-header { background: #fff; height: 70px; border-bottom: 1px solid #eee; }
-.header-content { display: flex; align-items: center; height: 100%; gap: 20px; width: 1150px; margin: 0 auto;}
+.header-content { display: flex; align-items: center; height: 100%; gap: 2px; max-width: 1150px; margin: 0 auto; width: 100%; }
 .logo img { height: 60px; }
 
 /* MEGA MENU STYLING */
@@ -48,13 +48,16 @@
 /* =============================
    NYKAA STYLE MEGA MENU
 ============================= */
-.mega-menu { 
+.mega-menu,
+.brands-dropdown,
+.fashion-dropdown { 
     display: none;
     position: absolute;
     top: 100%;
-    left: 75%;
+    left: 60%;
     transform: translateX(-50%);
-    width: 1150px;
+    width: 900px;
+    height: 420px;
     background: #fff;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
     padding: 30px 35px;
@@ -66,10 +69,9 @@
     display: flex; 
     gap: 28px; 
     align-items: center;
-    width: 1200px;
     margin: 0 auto;
     position: relative;  
-    margin-right: auto;
+    margin-left:20px ;
 }
 
 /* Show dropdown */
@@ -106,16 +108,11 @@
     display: none;
     position: absolute;
     top: 100%;
-    left: 75%;
     transform: translateX(-50%);
-
-    width: 1150px;
-    height: 420px;
-
+    height: 450px;
     background: #fff;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
     border-top: 1px solid #eee;
-
     padding: 0;
     z-index: 1100;
     top: calc(100%-10px);
@@ -129,7 +126,7 @@
 
 /* LEFT PANEL */
 .brands-left {
-    width: 260px;
+    width: 200px;
     background: #ffffff;
     padding: 20px;
     overflow-y: auto;
@@ -169,10 +166,10 @@
 
 .brands-right {
     flex: 1;
-    padding: 30px 35px;
+    padding: 30px 30px;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 28px 24px;
     background: #f5f3f3; /* same as dropdown */
 }
@@ -214,9 +211,7 @@
     display: none;
     position: absolute;
     top: 100%;
-    /* left: 50%; */
     transform: translateX(-50%);
-    width: 1100px;
     background: #fff;
     padding: 30px;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
@@ -256,7 +251,6 @@
 
 /* ***** SEARCH BAR ******** */
 .search-box { 
-    width: 260px; 
     position: relative; 
     background: #f3f3f3; 
     border-radius: 4px; 
@@ -409,15 +403,16 @@
   background: #f7f7f7;
 }
 
-#complete-signup-btn {
+#signin-btn {
   width: 100%;
   background-color: #fc2779;
   color: #fff;
-  padding: 10px;
+  padding: 10px ;
   border: none;
   border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .hidden {
@@ -426,7 +421,7 @@
 
 .bag-btn { background: transparent; border: none; position: relative; cursor: pointer; }
 .bag-count { 
-    position: absolute; top: -5px; right: -8px; 
+    position: absolute; top: -5px; right: -6px; 
     background: #fc2779; color: #fff; font-size: 11px; 
     padding: 2px 6px; border-radius: 50%; border: 2px solid #fff; 
     font-weight: bold;
@@ -451,7 +446,7 @@
 
 /* Fixed width container (IMPORTANT ALIGNMENT ANCHOR) */
 .category-content {
-    width: 1200px;
+    /* width: 1200px; */
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -515,11 +510,10 @@
     top: calc(100% - 10px);
     left: 50%;
     transform: translateX(-50%);
-    width: 1120px;
+    width: 1100px;
     height: 400px;
-    max-width: 1200px;
     background: #fff;
-    padding: 30px 35px;
+    /* padding: 30px 35px; */
     border-top: 1px solid #eee;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
     z-index: 1100;
@@ -637,7 +631,7 @@
   background: transparent;
   border: none;
   border-bottom: 1.5px solid #fff;
-  /* padding: 4px 2px; */
+  padding: 4px 2px;
   /* width: 180px; */
   color: #fff;
   font-size: 12px;
@@ -675,7 +669,7 @@
   color: white;
   display: flex;
   justify-content: space-around;
-  padding: 25px 250px;
+  padding: 20px 50px;
   width: 100%;
   background-color: rgb(58, 64, 71);
 
@@ -710,7 +704,7 @@
 .footer-links {
   background-color: rgb(140, 141, 148);
   color: rgb(255, 255, 255);
-  padding: 50px 200px;
+  padding: 20px 50px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -742,7 +736,7 @@
   display: flex;
   justify-content: space-around;
   background: #fff;
-  padding: 40px 200px;
+  padding: 20px 50px;
   text-align: center;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
@@ -773,7 +767,7 @@
 
 /* BAND 5 */
 .footer-popular {
-  padding: 30px;
+  padding: 20px 50px;
   font-size: 12px;
   color: #777;
 }
@@ -782,6 +776,8 @@
     position: relative;
     z-index: 1;
 }
+
+
 /* ===================== */
 /* BAG OVERLAY */
 /* ===================== */
@@ -917,4 +913,296 @@ body.bag-open {
 /* ===================== */
 .hidden {
     display: none;
+}
+
+
+
+/* =====================================================
+   STRICT MOBILE HEADER – GRID + DROPDOWN SUPPORT
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ================= GLOBAL SAFETY ================= */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body * {
+    max-width: 100%;
+  }
+
+  /* hide pink */
+  .top-bar {
+    display: none !important;
+  }
+
+
+  /* ================= HEADER ================= */
+  .main-header {
+    height: auto;
+    padding: 8px 0px;
+    margin-right: 30px; 
+  }
+
+  .header-content {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    grid-template-areas:
+      "logo account bag search"
+      "nav nav nav nav";
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    /* padding: 0 10px;    */
+    
+  }
+
+  /* row 1 */
+  .logo { grid-area: logo; margin-left: 20px;}
+  .account-wrapper { grid-area: account; }
+  .bag-wrapper, .bag-btn { grid-area: bag; }
+  .search-box { grid-area: search; }
+
+  .logo img { height: 30px; }
+
+  .search-box {
+    width: 100%;
+    height: 34px;
+  }
+
+  .header-actions { gap: 10px; }
+
+
+  /* ================= ROW 2 NAV ================= */
+  .main-nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    padding-top: 6px;
+    margin-top: 4px;
+    width: 100%;
+  }
+
+  /* remove Beauty Advice */
+  .main-nav a:last-child {
+    display: none !important;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    padding: 6px 4px;
+  }
+
+
+  /* ================= CATEGORY BAR ================= */
+
+  .category-bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+  }
+
+  .category-content {
+    width: 100%;
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 8px;
+    column-gap: 8px;
+    justify-items: center;
+  }
+
+  .cat-link {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* remove Lingerie & Accessories (usually last item) */
+ .category-content .cat-item:last-of-type {
+  display: none !important;
+}
+  /* hide SALE ribbon */
+  .offer {
+    display: none !important;
+  }
+
+
+  /* ================= DROPDOWN RESPONSIVE ================= */
+
+  /* fit inside screen */
+  .mega-menu,
+  .brands-dropdown,
+  .fashion-dropdown,
+  .mega-menu.category-mega {
+    position: fixed !important;
+    top: 120px;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 96vw !important;
+    max-width: 96vw !important;
+    height: 65vh;
+    overflow-y: auto;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  /* grids become 2 column */
+  .mega-grid,
+  .fashion-grid,
+  .brands-right {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+
+  /* ================= BAG ================= */
+  .bag-drawer {
+    width: 100%;
+  }
+
+}
+
+
+
+/* ===============================
+   MOBILE AUTH DROPDOWNS
+=============================== */
+
+@media (max-width: 768px) {
+
+  /* remove small desktop button feel */
+  .signin-btn {
+    width: auto;
+    padding: 6px 10px;
+    font-size: 12px;
+    height: 32px;
+  }
+
+  /* center login popup */
+  .login-dropdown {
+    position: fixed !important;
+    top: 60px;
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 92vw;
+    max-width: 380px;
+    right: auto;
+    margin-top: 0;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  /* bigger tap targets */
+  .login-dropdown input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .primary-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ================= USER DROPDOWN ================= */
+
+  .user-dropdown {
+    position: fixed !important;
+    top: 50px;
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 92vw;
+    max-width: 300px;
+    right: auto;
+    margin-top: 0;
+    border-radius: 10px;
+  }
+
+  .user-dropdown a {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+}
+
+
+
+/* =====================================================
+   MOBILE FOOTER RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* container safety */
+  .nykaa-footer .container,
+  .footer-band {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* ================= BAND 1 ================= */
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .top-box {
+    width: 100%;
+  }
+
+  .top-box input {
+    width: 70%;
+  }
+
+  /* ================= BAND 2 ================= */
+  .footer-links {
+    /* flex-direction: column; */
+    padding: 25px 16px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .footer-links .col {
+    width: 100%;
+  }
+
+  .footer-links h4 {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .footer-links .col a {
+    font-size: 12px;
+    margin: 4px 0;
+  }
+
+  /* ================= BAND 3 ================= */
+  .footer-trust {
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px 16px;
+  }
+
+  /* ================= BAND 4 ================= */
+  .footer-legal,
+  .footer-copy {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+
+  /* ================= BAND 5 ================= */
+  .footer-popular {
+    padding: 20px 16px;
+    font-size: 11px;
+  }
+
 }

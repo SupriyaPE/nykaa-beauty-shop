@@ -82,3 +82,95 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+
+
+
+
+/* =====================================================
+   PROFILE PAGE – MOBILE RESPONSIVE
+   SIDEBAR MOVES BELOW CARD
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== LAYOUT ===== */
+  .account-layout {
+    flex-direction: column;
+    gap: 16px;
+    margin: 10px auto;
+    padding: 0 12px;
+  }
+
+  /* ===== PROFILE CONTENT FIRST ===== */
+  .profile-content {
+    order: 1;
+  }
+
+  /* ===== SIDEBAR BELOW ===== */
+  .account-sidebar {
+    order: 2;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+
+  /* ===== PROFILE CARD ===== */
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  /* ===== AVATAR ===== */
+  .avatar img {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* ===== INFO ===== */
+  .profile-info {
+    padding-left: 0;
+  }
+
+  .profile-info h2 {
+    font-size: 18px;
+  }
+
+  .profile-info p {
+    font-size: 13px;
+  }
+
+  /* ===== EDIT BUTTON ===== */
+  .edit-btn {
+    position: static;
+    margin-top: 10px;
+    background: #fc2779;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    width: 100%;
+  }
+
+  /* ===== SIDEBAR LINKS AS BUTTONS ===== */
+  .account-sidebar a {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    background: #fff;
+  }
+
+  .account-sidebar a.active {
+    border: 1px solid #fc2779;
+    background: #fff5f8;
+    color: #fc2779;
+  }
+
+}

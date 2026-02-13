@@ -309,6 +309,102 @@
 
 
 
+/* =====================================================
+   HOME PAGE – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ================= HERO ================= */
+
+  .home-hero {
+    padding: 0 10px;
+    margin-bottom: 16px;
+  }
+
+  /* show 1 banner */
+  .hero-item {
+    flex: 0 0 100% !important;
+  }
+
+  .hero-item img {
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* ================= OFFER ================= */
+
+  .home-offer-banner img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  /* ================= STRIP ================= */
+
+  .home-strip {
+    padding: 16px 10px;
+  }
+
+  /* ================= SECTION WIDTH ================= */
+
+  .home-featured,
+  .home-categories {
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  /* ================= CATEGORIES ================= */
+
+  /* 6 → 2 */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+  /* ================= BRANDS ================= */
+
+  /* 6 → 3 */
+  .brand-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  /* ================= PRODUCTS ================= */
+
+  /* 5 → 2 */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .product-card {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .product-image img {
+    height: 150px;
+  }
+
+  .product-name {
+    font-size: 12px;
+    height: auto;
+  }
+
+  .price {
+    font-size: 13px;
+  }
+
+}
+
+
 
 
 /* .brand-video-section {

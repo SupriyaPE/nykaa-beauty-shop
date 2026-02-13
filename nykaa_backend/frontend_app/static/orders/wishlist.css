@@ -205,3 +205,116 @@
   margin-left: 23%;
 }
 
+
+
+
+
+/* =====================================================
+   WISHLIST – MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE ===== */
+  .wishlist-page {
+    margin: 10px auto 40px;
+    padding: 0 12px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* ===== LAYOUT STACK ===== */
+  .wishlist-layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ===== SIDEBAR → MOVE DOWN ===== */
+  .account-sidebar {
+    order: 2;
+    width: 100%;
+  }
+
+  /* convert to buttons */
+  .account-sidebar a {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .account-sidebar a.active {
+    border: 1px solid #e80071;
+    border-left: 1px solid #e80071;
+  }
+
+  /* ===== CONTENT ===== */
+  .wishlist-content {
+    order: 1;
+  }
+
+  .wishlist-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* ===== GRID ===== */
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* ===== CARD ===== */
+  .wishlist-card {
+    padding: 10px;
+  }
+
+  .wishlist-card img {
+    height: 160px;
+  }
+
+  /* ===== TEXT ===== */
+  .product-name {
+    font-size: 13px;
+  }
+
+  .product-price {
+    font-size: 13px;
+  }
+
+  /* ===== BUTTONS ===== */
+  .wishlist-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .wishlist-actions .btn-outline,
+  .wishlist-actions .btn-pink {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  /* ===== REMOVE BTN ===== */
+  .remove-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  /* ===== EMPTY ===== */
+  .wishlist-empty {
+    margin-top: 40px;
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .start-shopping {
+    width: 100%;
+    text-align: center;
+  }
+
+}
