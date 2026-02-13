@@ -134,14 +134,14 @@
 
 
 /* --- PRODUCT GRID (5 COLUMNS) --- */
-.product-grid {
+/* .product-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  grid-template-columns: repeat(5, 1fr); 
   gap: 22px;
   width: 100%;
-}
+} */
 
-.product-card {
+/* .product-card {
   background: #fff;
   border: 1px solid #f2f2f2;
   border-radius: 4px;
@@ -151,13 +151,13 @@
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s ease;
-}
+} */
 
-.product-card:hover {
+/* .product-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+} */
 
-.product-card img {
+/* .product-card img {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
@@ -169,16 +169,17 @@
   line-height: 1.4;
   margin-bottom: 8px;
   color: #000;
-}
+} */
 
-.price-row {
+/* .price-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .price { font-weight: 700; font-size: 14px; }
-.mrp { color: #888; text-decoration: line-through; font-size: 11px; }
+.mrp { color: #888; text-decoration: line-through; font-size: 11px; } */
+
 
 /* PRODUCTS */
 .product-grid {
@@ -191,7 +192,7 @@
 /* PRODUCT CARD  */
 .home-featured{
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .product-card {
@@ -310,7 +311,7 @@
 
 
 
-.brand-video-section {
+/* .brand-video-section {
   position: relative;
   width: 100%;
   height: 420px;
@@ -356,7 +357,7 @@
 
 .brand-video-cta {
   display: inline-block;
-  background: #fc2779; /* Nykaa pink */
+  background: #fc2779; 
   color: #fff;
   padding: 10px 22px;
   border-radius: 4px;
@@ -376,4 +377,4 @@
   font-size: 16px;
   font-weight: 500;
   border: 1px dashed #ccc;
-}
+} */
