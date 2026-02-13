@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: CI-CD Pipeline
 
 on:
   push:
@@ -6,8 +6,21 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
+    name: CI - Build
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t nykaa-app .
+
+  deploy:
+    name: CD - Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Deploy via SSH
