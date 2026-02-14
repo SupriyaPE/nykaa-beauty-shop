@@ -86,17 +86,12 @@ def home(request):
 from django.db.models import Q
 
 def product_list(request, slug=None, type=None):
-    products = Product.objects.filter(is_active=True).prefetch_related(
-        "variants__images",
-        "brand",
-        "category"
-    )
+
+    products = Product.objects.filter(is_active=True)
 
     current_filter = "All Products"
 
-    # =====================
-    # SEARCH (NEW)
-    # =====================
+    # SEARCH
     search_query = request.GET.get("q")
     if search_query:
         current_filter = f"Search results for '{search_query}'"
@@ -106,9 +101,7 @@ def product_list(request, slug=None, type=None):
             Q(category__name__icontains=search_query)
         )
 
-    # =====================
     # CATEGORY PAGE
-    # =====================
     if type == "category":
         category = get_object_or_404(Category, slug=slug, is_active=True)
         current_filter = category.name
@@ -126,15 +119,13 @@ def product_list(request, slug=None, type=None):
 
         products = products.filter(category_id__in=category_ids)
 
-    # =====================
     # BRAND PAGE
-    # =====================
     if type == "brand":
         brand = get_object_or_404(Brand, slug=slug, is_active=True)
         current_filter = brand.name
         products = products.filter(brand=brand)
 
-    # ================= FILTERS =================
+    # FILTERS
     brand_filter = request.GET.get("brand")
     min_price = request.GET.get("min_price")
     max_price = request.GET.get("max_price")
@@ -150,12 +141,16 @@ def product_list(request, slug=None, type=None):
 
     products = products.distinct()
 
+    # 🚀 PREFETCH ONLY AFTER FINAL RESULT
+    products = products.select_related("brand", "category").prefetch_related(
+        "variants__images"
+    )
+
     return render(request, "products/product_list.html", {
         "products": products,
         "brands": Brand.objects.filter(is_active=True),
         "current_filter": current_filter
     })
-
 # =========================
 # PRODUCT DETAIL
 # =========================
